@@ -7,9 +7,6 @@ exports.config = {
     specs: ['create.new.quote.spec.js'],
 
     onPrepare: function () {
-        var baseUrl = "https://qas-soflo.ecompanystore.com/#/Order";
-
         browser.driver.manage().window().maximize();
-        browser.get(baseUrl);
     }
 };

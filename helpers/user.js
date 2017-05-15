@@ -1,27 +1,27 @@
 "use strict";
 
-var User = function () {
-    this.password = "Awes0me1";
+var User = {
+    password: "Awes0me1",
 
-    this.testAe1 = {
+    testAe1: {
         name: 'Test Account1',
         username: 'Test1'
-    };
+    },
 
-    this.testAe2 = {
+    testAe2: {
         name: 'Test Account2',
         username: 'Test2'
-    };
+    },
 
-    this.testSc3 = {
+    testSc3: {
         name: 'Test Account 3',
         username: 'Test3'
-    };
+    },
 
-    this.testSc4 = {
+    testSc4: {
         name: 'Test Account4',
         username: 'Test4'
-    };
+    }
 };
 
 module.exports = User;

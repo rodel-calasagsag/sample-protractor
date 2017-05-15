@@ -1,6 +1,5 @@
 'use strict';
 var OrdersModule = require('./orders-module/orders.module');
-var LoginPage = require('./login.page');
 
 var NavPanel = function () {
     var menu = element.all(by.repeater('menuItem in value | filter: CanView'));
