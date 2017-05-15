@@ -1,7 +1,8 @@
 "use strict";
+var homeUrl = 'https://qas-soflo.ecompanystore.com/#/';
 
 var Urls = {
-    orders: 'https://qas-soflo.ecompanystore.com/#/Order'
+    orders: homeUrl + 'Order'
 };
 
 module.exports = Urls;

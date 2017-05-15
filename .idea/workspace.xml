@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="conf.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smoke/conf.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
-              <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+              <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -31,28 +31,38 @@
       <file leaf-file-name="create.new.quote.spec.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smoke/create.new.quote.spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="256">
+              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="general.info.form.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="general.info.form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/orders-module/general.info.form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="310">
+              <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+              <folding>
+                <element signature="e#961#1065#0" expanded="false" />
+                <element signature="e#1118#1228#0" expanded="false" />
+                <element signature="e#1439#1579#0" expanded="false" />
+                <element signature="e#1624#1767#0" expanded="false" />
+                <element signature="e#1811#1871#0" expanded="false" />
+                <element signature="e#1913#1971#0" expanded="false" />
+                <element signature="e#2012#2120#0" expanded="false" />
+                <element signature="e#2161#2269#0" expanded="false" />
+                <element signature="e#2310#2418#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="select.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/select.js">
+      <file leaf-file-name="date.picker.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/common/date.picker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="270">
+              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -111,17 +121,18 @@
         <option value="$PROJECT_DIR$/smoke/setup.spec.js" />
         <option value="$PROJECT_DIR$/pages/orders-module/orders.module.js" />
         <option value="$PROJECT_DIR$/pages/login.page.js" />
-        <option value="$PROJECT_DIR$/pages/navpanel.js" />
         <option value="$PROJECT_DIR$/helpers/base.url.js" />
-        <option value="$PROJECT_DIR$/smoke/conf.js" />
         <option value="$PROJECT_DIR$/helpers/user.js" />
         <option value="$PROJECT_DIR$/helpers/urls.js" />
-        <option value="$PROJECT_DIR$/helpers/base.urls.js" />
         <option value="$PROJECT_DIR$/pages/orders-module/order.search.tab.js" />
         <option value="$PROJECT_DIR$/pages/general.info.form.js" />
-        <option value="$PROJECT_DIR$/smoke/create.new.quote.spec.js" />
         <option value="$PROJECT_DIR$/helpers/select.js" />
+        <option value="$PROJECT_DIR$/pages/navpanel.js" />
+        <option value="$PROJECT_DIR$/helpers/base.urls.js" />
+        <option value="$PROJECT_DIR$/smoke/conf.js" />
         <option value="$PROJECT_DIR$/pages/orders-module/general.info.form.js" />
+        <option value="$PROJECT_DIR$/pages/common/date.picker.js" />
+        <option value="$PROJECT_DIR$/smoke/create.new.quote.spec.js" />
       </list>
     </option>
   </component>
@@ -148,6 +159,28 @@
     <option name="width" value="2422" />
     <option name="height" value="1372" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JSUnresolvedFunction</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -163,6 +196,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -171,7 +206,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="SOFLO Protractor Tests initial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -185,7 +230,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SOFLO Protractor Tests initial" />
+              <option name="myItemId" value="SOFLO Protractor Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -199,7 +244,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SOFLO Protractor Tests initial" />
+              <option name="myItemId" value="SOFLO Protractor Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -217,7 +262,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="SOFLO Protractor Tests initial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -227,8 +290,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,15 +297,17 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs.protractor.protractor_package" value="$USER_HOME$/AppData/Roaming/npm/node_modules/protractor" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/common" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="" />
     <property name="javascript.nodejs.core.library.configured.version" value="6.10.3" />
+    <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BitBucket\Webstorm Projects\SOFLO Protractor Tests\pages\common" />
       <recent name="D:\BitBucket\Webstorm Projects\SOFLO Protractor Tests initial\pages\orders-module" />
       <recent name="D:\BitBucket\Webstorm Projects\SOFLO Protractor Tests\pages" />
     </key>
@@ -377,44 +440,46 @@
       <workItem from="1494745931034" duration="5840000" />
       <workItem from="1494752016736" duration="43000" />
       <workItem from="1494848928743" duration="63000" />
-      <workItem from="1494849039427" duration="6000" />
+      <workItem from="1494849039427" duration="92000" />
+      <workItem from="1494849150435" duration="216000" />
+      <workItem from="1494849377945" duration="14904000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Smoke_Tests - 2017.05.07 at 22h 56m 46s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.15 at 20h 53m 16s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 22h 58m 16s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.15 at 20h 55m 34s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 23h 00m 19s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 40m 36s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 23h 01m 07s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 41m 35s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 23h 02m 31s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 46m 21s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 23h 03m 28s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 48m 59s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.07 at 23h 10m 13s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 50m 19s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.13 at 01h 32m 14s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 57m 15s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.13 at 01h 34m 17s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 58m 17s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Smoke_Tests - 2017.05.13 at 01h 35m 00s.xml">
+    <history-entry file="Smoke_Tests - 2017.05.16 at 02h 59m 42s.xml">
       <configuration name="Smoke Tests" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38571000" />
+    <option name="totallyTimeSpent" value="53777000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,12 +497,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28666666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33222038" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33167496" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -458,19 +523,21 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/login.page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/general.info.form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="e#961#1065#0" expanded="false" />
+            <element signature="e#1118#1228#0" expanded="false" />
+            <element signature="e#1439#1579#0" expanded="false" />
+            <element signature="e#1624#1767#0" expanded="false" />
+            <element signature="e#1811#1871#0" expanded="false" />
+            <element signature="e#1913#1971#0" expanded="false" />
+            <element signature="e#2012#2120#0" expanded="false" />
+            <element signature="e#2161#2269#0" expanded="false" />
+            <element signature="e#2310#2418#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -490,7 +557,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/select.js">
+    <entry file="file://$PROJECT_DIR$/pages/common/select.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
@@ -526,7 +593,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="e#961#1065#0" expanded="false" />
+            <element signature="e#1118#1228#0" expanded="false" />
+            <element signature="e#1439#1579#0" expanded="false" />
+            <element signature="e#1624#1767#0" expanded="false" />
+            <element signature="e#1811#1871#0" expanded="false" />
+            <element signature="e#1913#1971#0" expanded="false" />
+            <element signature="e#2012#2120#0" expanded="false" />
+            <element signature="e#2161#2269#0" expanded="false" />
+            <element signature="e#2310#2418#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -759,28 +836,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="3879" column="29" lean-forward="true" selection-start-line="3879" selection-start-column="29" selection-end-line="3879" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/login-page.js" />
-    <entry file="file://$PROJECT_DIR$/helpers/base.urls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/navpanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -804,14 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/orders.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -820,7 +868,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/select.js">
+    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="3878" column="114" lean-forward="false" selection-start-line="3878" selection-start-column="114" selection-end-line="3878" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/navpanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/base.urls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/common/select.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
@@ -828,18 +900,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/create.new.quote.spec.js">
+    <entry file="file://$PROJECT_DIR$/pages/common/date.picker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/general.info.form.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding>
+            <element signature="e#961#1065#0" expanded="false" />
+            <element signature="e#1118#1228#0" expanded="false" />
+            <element signature="e#1439#1579#0" expanded="false" />
+            <element signature="e#1624#1767#0" expanded="false" />
+            <element signature="e#1811#1871#0" expanded="false" />
+            <element signature="e#1913#1971#0" expanded="false" />
+            <element signature="e#2012#2120#0" expanded="false" />
+            <element signature="e#2161#2269#0" expanded="false" />
+            <element signature="e#2310#2418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smoke/create.new.quote.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smoke/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
-          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
           <folding />
         </state>
       </provider>

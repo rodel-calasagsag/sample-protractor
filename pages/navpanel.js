@@ -2,7 +2,7 @@
 var OrdersModule = require('./orders-module/orders.module');
 
 var NavPanel = function () {
-    var menu = element.all(by.repeater('menuItem in value | filter: CanView'));
+    var ordersModule = element.all(by.repeater('menuItem in value | filter: CanView')).get(1);
     var logoutBtn = element(by.css('.icon-signout'));
 
     this.logout = function () {
@@ -10,7 +10,7 @@ var NavPanel = function () {
     };
 
     this.goToOrders = function () {
-        menu.get(1).click();
+        ordersModule.click();
         return new OrdersModule();
     };
 };
