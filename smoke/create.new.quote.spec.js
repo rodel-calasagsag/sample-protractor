@@ -20,10 +20,12 @@ describe('New Quote', function () {
     });
 
     it('should be created via the New Quote button', function () {
-        // general info
+        // test data: general info
         var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
         var description = 'CLONED from Order 17836 - Build Swag for Bing - Drawstring Packs';
-        var shipDate = new Date('06/08/2017');
+        var shipDate = new Date('05/30/2017');
+        var reqInHands = new Date('06/28/2017');
+        var firmInHands = new Date('08/04/2017');
         var rushValue = true;
         var multiValue = true;
         var aeName = 'Test Account2';
@@ -34,6 +36,8 @@ describe('New Quote', function () {
         generalForm.typeOrderName(orderName)
             .typeDescription(description)
             .pickShipDate(shipDate)
+            .pickReqInHands(reqInHands)
+            .pickFirmInHands(firmInHands)
             .selectRush(rushValue)
             .selectMulti(multiValue)
             .selectCustomOrder()

@@ -1,4 +1,6 @@
 "use strict";
+var WaitTime = require('../helpers/wait.times');
+
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     capabilities: {
@@ -8,5 +10,6 @@ exports.config = {
 
     onPrepare: function () {
         browser.driver.manage().window().maximize();
+        browser.manage().timeouts().implicitlyWait(WaitTime.halfMin);
     }
 };
