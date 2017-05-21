@@ -1,5 +1,5 @@
 "use strict";
-var OrderSearchTab = require('./order.search.tab');
+var OrderSearchTab = require('./tab-level/order.search.tab');
 
 var OrdersModule = function () {
     var searchTab = element(by.css('li.searchtab'));

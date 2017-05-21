@@ -1,7 +1,7 @@
 'use strict';
-var Select = require('../common/select');
-var DatePicker = require('../common/date.picker');
-var BlockScreen = require('../common/blockscreen');
+var Select = require('../../common/select');
+var DatePicker = require('../../common/date.picker');
+var BlockScreen = require('../../common/blockscreen');
 
 var GeneralInfoForm = function () {
     // page elements

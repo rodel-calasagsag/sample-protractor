@@ -10,6 +10,8 @@ var OrderTab = function () {
     var accountExecutive = avatars.get(0);
     var salesCoordinator = avatars.get(1);
     var orderNumber = $(".closeable .active span.ng-binding");
+    var storeCode = $('.closeable .active span.ng-binding + .quiet');
+    var customerName = $('.fa + .text-sm.text-small.ng-binding');
 
     this.getOrderName = function () {
         return orderName.getText();
@@ -45,6 +47,15 @@ var OrderTab = function () {
         });
     };
 
+    this.getStoreCode = function () {
+        return storeCode.getText().then(function (text) {
+            return text.toUpperCase();
+        });
+    };
+
+    this.getCustomerName = function () {
+        return customerName.getText();
+    };
 };
 
 module.exports = OrderTab;

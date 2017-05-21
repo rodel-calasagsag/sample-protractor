@@ -1,4 +1,5 @@
 "use strict";
+var WaitTimes = require('../../../helpers/wait.times');
 
 var GeneralTab = function () {
     // elements
@@ -18,14 +19,15 @@ var GeneralTab = function () {
 
     // other fields
     var EC = protractor.ExpectedConditions;
+
+    /**
+     * Get the value of the ship date
+     *
+     * @returns {*} Date object representing the ship date
+     */
     this.click = function () {
-        /**
-         * Get the value of the ship date
-         *
-         * @returns {*} Date object representing the ship date
-         */
         tab.click();
-        EC.visibilityOf(tabTitle);
+        browser.wait(EC.visibilityOf(tabTitle), WaitTimes.fiveSec);
         return this;
     };
 
