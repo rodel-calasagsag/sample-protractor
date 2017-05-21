@@ -10,6 +10,5 @@ exports.config = {
 
     onPrepare: function () {
         browser.driver.manage().window().maximize();
-        browser.manage().timeouts().implicitlyWait(WaitTime.halfMin);
     }
 };

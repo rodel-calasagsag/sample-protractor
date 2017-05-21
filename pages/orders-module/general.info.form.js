@@ -1,14 +1,15 @@
 'use strict';
 var Select = require('../common/select');
 var DatePicker = require('../common/date.picker');
+var BlockScreen = require('../common/blockscreen');
 
 var GeneralInfoForm = function () {
     // page elements
     var orderNameField = element(by.id('orderName'));
     var descriptionField = element(by.id('description'));
     var shipDateField = element(by.id('shipDate'));
-    var inhandsDateField = element(by.id('inhandsDate'));
-    var firmInhandsDateField = element(by.id('firminhandsDate'));
+    var inHandsDateField = element(by.id('inhandsDate'));
+    var firmInHandsDateField = element(by.id('firminhandsDate'));
     var rushNoBtn = element.all(by.model('order.IsRush')).first();
     var rushYesBtn = element.all(by.model('order.IsRush')).last();
     var multiNoBtn = element.all(by.model('order.IsMultipleShipping')).first();
@@ -20,8 +21,9 @@ var GeneralInfoForm = function () {
     var ocDropDown = element(by.id('orderCreatorId'));
     var createOrderBtn = element(by.buttonText('Create Order'));
 
-    // imported elements
+    // page objects
     var datePicker = new DatePicker();
+    var blockScreen = new BlockScreen();
 
     // expected condition
     var EC = protractor.ExpectedConditions;
@@ -44,12 +46,12 @@ var GeneralInfoForm = function () {
     };
 
     this.pickReqInHands = function (reqDate) {
-        datePicker.pick(inhandsDateField, reqDate);
+        datePicker.pick(inHandsDateField, reqDate);
         return this;
     };
 
     this.pickFirmInHands = function (firmDate) {
-        datePicker.pick(firmInhandsDateField, firmDate);
+        datePicker.pick(firmInHandsDateField, firmDate);
         return this;
     };
 
