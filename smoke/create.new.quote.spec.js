@@ -40,10 +40,10 @@ describe('New Quote', function () {
             .pickFirmInHands(firmInHands)
             .selectRush(rushValue)
             .selectMulti(multiValue)
-            .selectCustomOrder()
             .selectAE(aeName)
             .selectSC(scName)
             .selectOC(ocName);
+            // .clickCreateOrder();
     });
 
     afterEach(function () {

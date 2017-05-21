@@ -7,6 +7,7 @@ var DatePicker = function () {
     var leftBtn = element(by.className('glyphicon-chevron-left'));
     var rightBtn = element(by.className('glyphicon-chevron-right'));
     var title = element(by.css('button.uib-title'));
+    var dayButtons = element.all(by.repeater('dt in row'));
 
     // other vars
     var EC = protractor.ExpectedConditions;
@@ -31,7 +32,6 @@ var DatePicker = function () {
      * @param targetNum Number on the button to be clicked
      */
     var clickDayBtn = function (targetNum) {
-        var dayButtons = element.all(by.repeater('dt in row'));
         var monthStart;
 
         dayButtons.filter(function (dayBtn, index) {

@@ -18,7 +18,13 @@ var GeneralInfoForm = function () {
     var aeDropDown = element(by.id('accountManagerId'));
     var scDropDown = element(by.id('salesCoordinatorId'));
     var ocDropDown = element(by.id('orderCreatorId'));
+    var createOrderBtn = element(by.buttonText('Create Order'));
+
+    // imported elements
     var datePicker = new DatePicker();
+
+    // expected condition
+    var EC = protractor.ExpectedConditions;
 
     this.typeOrderName = function (orderName) {
         orderNameField.clear();
@@ -65,6 +71,11 @@ var GeneralInfoForm = function () {
         return this;
     };
 
+    /**
+     * Select the order type "Custom Order"
+     *
+     * @returns {GeneralInfoForm}
+     */
     this.selectCustomOrder = function () {
         customOrderBtn.click();
         return this;
@@ -91,6 +102,13 @@ var GeneralInfoForm = function () {
         var scSelect = new Select(ocDropDown);
         scSelect.byText(ocName);
         return this;
+    };
+
+    /**
+     * Click the Create Order button
+     */
+    this.clickCreateOrder = function () {
+        createOrderBtn.click();
     };
 };
 
