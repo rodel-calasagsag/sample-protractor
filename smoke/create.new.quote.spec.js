@@ -12,7 +12,7 @@ var CustomerTab = require('../pages/orders-module/customer.tab');
 var SummaryTab = require('../pages/orders-module/summary-tab/summary.tab');
 var CustomerSection = require('../pages/orders-module/summary-tab/customer.section');
 
-describe('New Quote', function () {
+describe('Quotes', function () {
     // pages
     var loginPage = new LoginPage();
     var navPanel = new NavPanel();
@@ -25,7 +25,7 @@ describe('New Quote', function () {
     var customerSummary = new CustomerSection();
 
     // suite variables
-    var orderNumber;
+    var orderNumber = '13139';
 
     // test data: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
@@ -40,12 +40,12 @@ describe('New Quote', function () {
     var ocName = 'Test Account4';
 
     // test data: customer details
-    var customerName;
+    var customerName = "NANCY MASON";
     var customerSap = "0001365875";
-    var customerEmail;
-    var customerPhone;
-    var customerStore;
-    var customerCompany;
+    var customerEmail = "NONE@ECOMPANYSTORE.COM";
+    var customerPhone = "678-942-3100";
+    var customerStore = "CIG";
+    var customerCompany = "ECS TEST DATA";
     var billingAddress;
 
     /**
@@ -65,7 +65,8 @@ describe('New Quote', function () {
         navPanel.logout();
     });
 
-    it('should be created via the New Quote button', function () {
+
+    xit('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -78,7 +79,29 @@ describe('New Quote', function () {
     });
 
     it('should be searchable in Order Search tab', function () {
-        // todo fill this up
+        // search for the quote
+        searchTab.searchFor(orderNumber)
+            .findRowWithOrderNumber(orderNumber);
+
+        // verify row details
+        // todo verify AE avatar
+        // todo verify SC avatar
+        expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderNumber);
+        expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderName);
+        expect(searchTab.getRowCustomerName()).toContain(customerName);
+        expect(searchTab.getRowStoreCode()).toEqual(customerStore);
+        expect(searchTab.getRowInHands()).toEqual(reqInHands);
+        expect(searchTab.getRowFirmInHands()).toEqual(firmInHands);
+        expect(searchTab.getRowStatus()).toEqual(OrderStatuses.quote);
+        // todo verify create date
+        // todo verify multi flag
+        // todo verify rush flag
+
+    });
+
+    xit('should have a Quote Summary tab', function () {
+        // todo complete this
+        expect(true).toBeTruthy();
     });
 
     // utility functions
