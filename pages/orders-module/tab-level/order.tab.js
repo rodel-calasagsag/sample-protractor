@@ -12,6 +12,8 @@ var OrderTab = function () {
     var orderNumber = $(".closeable .active span.ng-binding");
     var storeCode = $('.closeable .active span.ng-binding + .quiet');
     var customerName = $('.fa + .text-sm.text-small.ng-binding');
+    var multiIcon = $('img[title="This order has multiple drop ships"]');
+    var rushIcon = $('img[title="Hurry up! This is a Rush order!"]');
 
     this.getOrderName = function () {
         return orderName.getText();
@@ -55,6 +57,14 @@ var OrderTab = function () {
 
     this.getCustomerName = function () {
         return customerName.getText();
+    };
+
+    this.showsMultiIcon = function () {
+        return multiIcon.isDisplayed();
+    };
+
+    this.showsRushIcon = function () {
+        return rushIcon.isDisplayed();
     };
 };
 
