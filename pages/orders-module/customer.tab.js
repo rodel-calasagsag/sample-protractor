@@ -8,6 +8,8 @@ var CustomerTab = function () {
     var searchedTiles = element.all(by.repeater('customer in customerSearch track by customer.CustomerNumber'));
     var saveBtn = $('div:not(.ng-hide) > .btn.btn-primary.bt-large');
     var customerName = element(by.className('media-title'));
+
+    // todo refactor this to depend on the labels
     var details = $$('#orderCustomerForm .property .value');
     var sapNumber = details.get(0);
     var email = details.get(1);
@@ -71,6 +73,7 @@ var CustomerTab = function () {
             return text;
         });
     };
+
     this.getBillingAddress = function () {
         var heading = "BILLING ADDRESS";
         var nullString = "";

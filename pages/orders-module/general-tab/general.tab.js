@@ -2,20 +2,32 @@
 var WaitTimes = require('../../../helpers/wait.times');
 
 var GeneralTab = function () {
+    // constants
+    const DETAILS_LOCATOR = ".section-content > .property";
+    const LABEL_ORDER_NAME = "Order Name";
+    const LABEL_DESCRIPTION = "Description";
+    const LABEL_SHIP_DATE = "Ship Date";
+    const LABEL_REQ_IN_HANDS = "Requested In Hands Date";
+    const LABEL_FIRM_IN_HANDS = "Firm In Hands Date";
+    const LABEL_ACCOUNT_EXECUTIVE = "Account Executive";
+    const LABEL_SALES_COORDINATOR = "Sales Coordinator";
+    const LABEL_ORDER_CREATOR = "Order Creator";
+    const NULL_STRING = "";
+
     // elements
     var tab = element(by.css('li[heading="General"]'));
     var tabTitle = element(by.cssContainingText('.legend', 'General Info'));
-    var values = $$('.section-content .property .value');
-    var orderName = values.get(0);
-    var description = values.get(1);
-    var shipDate = values.get(2);
-    var reqInHandsDate = values.get(3);
-    var firmInHandsDate = values.get(4);
-    var rushValue = values.get(5);
-    var multiValue = values.get(6);
-    var accountExecutive = values.get(7);
-    var salesCoordinator = values.get(8);
-    var orderCreator = values.get(9);
+    var iconedValues = $$('.label.wide + .value.buffer-top');
+    var orderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_NAME));
+    var description = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_DESCRIPTION));
+    var shipDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SHIP_DATE));
+    var reqInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_REQ_IN_HANDS));
+    var firmInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_FIRM_IN_HANDS));
+    var rushValue = iconedValues.first();
+    var multiValue = iconedValues.last();
+    var accountExecutive = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ACCOUNT_EXECUTIVE));
+    var salesCoordinator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SALES_COORDINATOR));
+    var orderCreator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_CREATOR));
 
     // other fields
     var EC = protractor.ExpectedConditions;
@@ -37,14 +49,17 @@ var GeneralTab = function () {
      * @returns {*} The order name
      */
     this.getOrderName = function () {
-        return orderName.getText();
-    };
+        return orderName.getText().then(function (text) {
+            var heading = LABEL_ORDER_NAME.toUpperCase();
 
+            return text.replace(heading, NULL_STRING).trim();
+        });
+    };
 
     this.getDescription = function () {
         return description.getText().then(function (strDesc) {
             if (strDesc.length > 0) {
-                return strDesc
+                return strDesc.replace(LABEL_DESCRIPTION.toUpperCase(), NULL_STRING).trim();
             } else {
                 return null;
             }
@@ -53,20 +68,26 @@ var GeneralTab = function () {
 
     this.getShipDate = function () {
         return shipDate.getText().then(function (strDate) {
-            return new Date(strDate);
+            var extracted = strDate.replace(LABEL_SHIP_DATE.toUpperCase(), NULL_STRING).trim();
+
+            return new Date(extracted);
         });
     };
 
     this.getReqInHands = function () {
         return reqInHandsDate.getText().then(function (strDate) {
-            return new Date(strDate);
+            var extracted = strDate.replace(LABEL_REQ_IN_HANDS.toUpperCase(), NULL_STRING).trim();
+
+            return new Date(extracted);
         });
     };
 
     this.getFirmInHands = function () {
         return firmInHandsDate.getText().then(function (strDate) {
             if (strDate.length > 0) {
-                return new Date(strDate);
+                var extracted = strDate.replace(LABEL_FIRM_IN_HANDS.toUpperCase(), NULL_STRING).trim();
+
+                return new Date(extracted);
             } else {
                 return null;
             }
@@ -86,15 +107,21 @@ var GeneralTab = function () {
     };
 
     this.getAE = function () {
-        return accountExecutive.getText();
+        return accountExecutive.getText().then(function (text) {
+            return text.replace(LABEL_ACCOUNT_EXECUTIVE.toUpperCase(), NULL_STRING).trim();
+        });
     };
 
     this.getSC = function () {
-        return salesCoordinator.getText();
+        return salesCoordinator.getText().then(function (text) {
+            return text.replace(LABEL_SALES_COORDINATOR.toUpperCase(), NULL_STRING).trim();
+        });
     };
 
     this.getOC = function () {
-        return orderCreator.getText();
+        return orderCreator.getText().then(function (text) {
+            return text.replace(LABEL_ORDER_CREATOR.toUpperCase(), NULL_STRING).trim();
+        });
     };
 };
 

@@ -66,7 +66,7 @@ describe('Quotes', function () {
     });
 
 
-    xit('should be created via the New Quote button', function () {
+    it('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -78,7 +78,7 @@ describe('Quotes', function () {
         verifyCustomerDetailsInSummaryTab();
     });
 
-    it('should be searchable in Order Search tab', function () {
+    xit('should be searchable in Order Search tab', function () {
         // search for the quote
         searchTab.searchFor(orderNumber)
             .findRowWithOrderNumber(orderNumber);
