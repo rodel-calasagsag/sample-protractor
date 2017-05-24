@@ -10,7 +10,7 @@ var CustomerTab = function () {
     var customerName = element(by.className('media-title'));
 
     // todo refactor this to depend on the labels
-    var details = $$('#orderCustomerForm .property');
+    var details = $$('#orderCustomerForm .property .value');
     var sapNumber = details.get(0);
     var email = details.get(1);
     var phone = details.get(2);

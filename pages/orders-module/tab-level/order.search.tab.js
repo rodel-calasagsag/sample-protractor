@@ -39,6 +39,7 @@ var OrderSearchTab = function () {
         searchField.sendKeys(query);
         searchBtn.click();
         this.click();
+        browser.wait(resultsToLoad(), WaitTime.halfMin, "No results were loaded after the specified waiting time");
         return this;
     };
 
@@ -48,12 +49,14 @@ var OrderSearchTab = function () {
         return this;
     };
 
-    this.findRowWithOrderNumber = function (targetOrderNumber) {
+    this.findRowWithOrderNumber = function (promisedOrderNum) {
         rowElement = searchResults.filter(function (row) {
             return row.element(orderNumAndTitleSpan.locator()).getText().then(function (spanText) {
-                if (spanText.startsWith(targetOrderNumber)) {
-                    return row;
-                }
+                return promisedOrderNum.then(function (strOrderNum) {
+                    if (spanText.startsWith(strOrderNum)) {
+                        return row;
+                    }
+                });
             });
         }).first();
     };
@@ -99,13 +102,10 @@ var OrderSearchTab = function () {
         return rowElement.element(scAvatar.locator()).getAttribute('title');
     };
 
-    this.getRowCreateDate = function () {
+    this.getRowCreateDateTime = function () {
         return rowElement.element(createDateTime.locator()).getText().then(function (strDateTime) {
-            var strDateLength = 10;
-            var startIndex = strDateTime.length - strDateLength;
-            var strDateOnly = strDateTime.substr(startIndex, strDateLength);
-
-            return new Date(strDateOnly);
+            var dt = new Date(strDateTime);
+            return dt.toString();
         });
     };
 
@@ -115,6 +115,13 @@ var OrderSearchTab = function () {
 
     this.rowShowsRushFlag = function () {
         return rowElement.element(rushFlag.locator()).isDisplayed();
+    };
+
+    // methods
+    var resultsToLoad = function () {
+        return searchResults.count().then(function (count) {
+            return count > 0;
+        });
     };
 };
 

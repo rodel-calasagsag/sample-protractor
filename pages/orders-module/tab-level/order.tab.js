@@ -44,9 +44,7 @@ var OrderTab = function () {
     };
 
     this.getOrderNumber = function () {
-        return orderNumber.getText().then(function (orderNum) {
-            return orderNum;
-        });
+        return orderNumber.getText();
     };
 
     this.getStoreCode = function () {
@@ -66,6 +64,10 @@ var OrderTab = function () {
     this.showsRushIcon = function () {
         return rushIcon.isDisplayed();
     };
+
+    this.showsQuoteSummaryTab = function () {
+        return
+    }
 };
 
 module.exports = OrderTab;

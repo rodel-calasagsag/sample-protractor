@@ -7,10 +7,11 @@ var User = require('../../helpers/user.js');
 var BaseUrl = require('../../helpers/base.urls');
 var GeneralTab = require('../../pages/orders-module/general-tab/general.tab');
 var OrderTab = require('../../pages/orders-module/tab-level/order.tab');
-var OrderStatuses = require('../../helpers/order.statuses');
+var OrderStatus = require('../../helpers/order.statuses');
 var CustomerTab = require('../../pages/orders-module/customer.tab');
 var SummaryTab = require('../../pages/orders-module/summary-tab/summary.tab');
 var CustomerSection = require('../../pages/orders-module/summary-tab/customer.section');
+var QuoteSummaryTab = require('../../pages/orders-module/quote-summary-tab/quote.summary.tab');
 
 describe('Quotes', function () {
     // pages
@@ -23,8 +24,12 @@ describe('Quotes', function () {
     var customerTab = new CustomerTab();
     var summaryTab = new SummaryTab();
     var customerSummary = new CustomerSection();
+    var quoteTab = new QuoteSummaryTab();
 
     // suite variables
+    var baseUrl = BaseUrl.qas.orders;
+    var username = User.testAe2.username;
+    var password = User.password;
     var orderNumber = '13139';
 
     // test data: general info
@@ -38,7 +43,7 @@ describe('Quotes', function () {
     var aeName = 'Test Account2';
     var scName = 'Test Account 3';
     var ocName = 'Test Account4';
-    var orderCreateDate = new Date("05/22/2017");
+    var orderCreateDateTime = new Date("12:04 PM 05/22/2017");
 
     // test data: customer details
     var customerName = "NANCY MASON";
@@ -53,8 +58,7 @@ describe('Quotes', function () {
      * Login as AE and go to order search tab
      */
     beforeEach(function () {
-        browser.get(BaseUrl.orders);
-        loginPage.login(User.testAe2.username, User.password);
+        loginPage.login(baseUrl, username, password);
         navPanel.goToOrders()
             .goToSearchTab();
     });
@@ -66,12 +70,13 @@ describe('Quotes', function () {
         navPanel.logout();
     });
 
-    xit('should be created via the New Quote button', function () {
+    it('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
         chooseCustomer();
         getExpectedCustomerDetails();
+        verifyPresenceOfQuoteSummaryTab();
         verifyCustomerDetailsInCustomerTab();
         verifyCustomerDetailsInOrderTab();
         verifyPresenceOfConvertToOrderBtnInSummaryTab();
@@ -92,22 +97,36 @@ describe('Quotes', function () {
         expect(searchTab.getRowStoreCode()).toEqual(customerStore);
         expect(searchTab.getRowInHands()).toEqual(reqInHands);
         expect(searchTab.getRowFirmInHands()).toEqual(firmInHands);
-        expect(searchTab.getRowStatus()).toEqual(OrderStatuses.quote);
-        expect(searchTab.getRowCreateDate()).toEqual(orderCreateDate);
+        expect(searchTab.getRowStatus()).toEqual(OrderStatus.quote);
+        expect(searchTab.getRowCreateDateTime()).toEqual(orderCreateDateTime.toString());
         expect(searchTab.rowShowsMultiFlag()).toBe(multiValue);
         expect(searchTab.rowShowsRushFlag()).toBe(rushValue);
     });
 
-    xit('should have a Quote Summary tab', function () {
+    xit('can be cloned', function () {
         // todo complete this
         expect(true).toBeTruthy();
     });
 
-    // utility functions
+    xit('dummy 1', function () {
+        var date1 = new Date("03:51 PM 05/24/2017");
+        var date2 = new Date("05/24/2017");
+        date2.setHours(15);
+        date2.setMinutes(51);
+
+        expect(date1).toEqual(date2);
+    });
+
+    // utility methods
+    var setOrderCreateDateTime = function () {
+        orderCreateDateTime = new Date();
+        orderCreateDateTime.setSeconds(0);
+    };
+
     var verifyOrderTabDetails = function () {
         orderNumber = orderTab.getOrderNumber();
         expect(orderTab.getOrderName()).toEqual(orderName);
-        expect(orderTab.getOrderStatus()).toEqual(OrderStatuses.quote);
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
         expect(orderTab.getReqInHands()).toEqual(reqInHands);
         expect(orderTab.getFirmInHands()).toEqual(firmInHands);
         expect(orderTab.getAE()).toEqual(aeName);
@@ -143,7 +162,7 @@ describe('Quotes', function () {
             .selectSC(scName)
             .selectOC(ocName)
             .clickCreateOrder();
-        orderCreateDate = new Date();
+        setOrderCreateDateTime();
         generalTab.click();
     };
 
@@ -181,5 +200,9 @@ describe('Quotes', function () {
         expect(customerSummary.getSapNumber()).toEqual(customerSap);
         expect(customerSummary.getEmail()).toEqual(customerEmail);
         expect(customerSummary.getBillingAddress()).toEqual(billingAddress);
+    };
+
+    var verifyPresenceOfQuoteSummaryTab = function () {
+        expect(quoteTab.isDisplayed()).toBeTruthy();
     };
 });
