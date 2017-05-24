@@ -12,12 +12,17 @@ var OrderSearchTab = function () {
     var searchField = element(by.id('searchTicketsTerm'));
     var searchBtn = $('.input-group-btn .btn-default');
     var searchResults = element.all(by.repeater('order in orders'));
+    var aeAvatar = $('td:first-child .media-wrapper');
+    var scAvatar = $('td:nth-child(2) .media-wrapper');
     var orderNumAndTitleSpan = $('a[title="SoFlo Order ID & Name"]');
     var customerNameSpan = $('a[title="take me to the customer page"]');
     var customerNameAndStoreSpan = element(by.className('details'));
     var inHandsDateSpan = $('[title="In Hands-Date"]');
     var firmInHandsDateSpan = $('[title="Firm In Hands-Date"]');
     var orderStatusSpan = element(by.className('label-default'));
+    var createDateTime = $('td:nth-last-child(3) div.ng-binding');
+    var multiFlag = $('[title="This order has multiple shipping addresses!"]');
+    var rushFlag = $('[title="This is a RUSH order!"]');
 
     // fields
     var rowElement;
@@ -86,6 +91,31 @@ var OrderSearchTab = function () {
         return rowElement.element(orderStatusSpan.locator()).getText();
     };
 
+    this.getRowAE = function () {
+        return rowElement.element(aeAvatar.locator()).getAttribute('title');
+    };
+
+    this.getRowSC = function () {
+        return rowElement.element(scAvatar.locator()).getAttribute('title');
+    };
+
+    this.getRowCreateDate = function () {
+        return rowElement.element(createDateTime.locator()).getText().then(function (strDateTime) {
+            var strDateLength = 10;
+            var startIndex = strDateTime.length - strDateLength;
+            var strDateOnly = strDateTime.substr(startIndex, strDateLength);
+
+            return new Date(strDateOnly);
+        });
+    };
+
+    this.rowShowsMultiFlag = function () {
+        return rowElement.element(multiFlag.locator()).isDisplayed();
+    };
+
+    this.rowShowsRushFlag = function () {
+        return rowElement.element(rushFlag.locator()).isDisplayed();
+    };
 };
 
 module.exports = OrderSearchTab;

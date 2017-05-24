@@ -1,16 +1,16 @@
 "use strict";
-var LoginPage = require('../pages/login.page.js');
-var NavPanel = require('../pages/navpanel');
-var OrderSearchTab = require('../pages/orders-module/tab-level/order.search.tab');
-var GeneralInfoForm = require('../pages/orders-module/general-tab/general.info.form');
-var User = require('../helpers/user.js');
-var BaseUrl = require('../helpers/base.urls');
-var GeneralTab = require('../pages/orders-module/general-tab/general.tab');
-var OrderTab = require('../pages/orders-module/tab-level/order.tab');
-var OrderStatuses = require('../helpers/order.statuses');
-var CustomerTab = require('../pages/orders-module/customer.tab');
-var SummaryTab = require('../pages/orders-module/summary-tab/summary.tab');
-var CustomerSection = require('../pages/orders-module/summary-tab/customer.section');
+var LoginPage = require('../../pages/login.page.js');
+var NavPanel = require('../../pages/navpanel');
+var OrderSearchTab = require('../../pages/orders-module/tab-level/order.search.tab');
+var GeneralInfoForm = require('../../pages/orders-module/general-tab/general.info.form');
+var User = require('../../helpers/user.js');
+var BaseUrl = require('../../helpers/base.urls');
+var GeneralTab = require('../../pages/orders-module/general-tab/general.tab');
+var OrderTab = require('../../pages/orders-module/tab-level/order.tab');
+var OrderStatuses = require('../../helpers/order.statuses');
+var CustomerTab = require('../../pages/orders-module/customer.tab');
+var SummaryTab = require('../../pages/orders-module/summary-tab/summary.tab');
+var CustomerSection = require('../../pages/orders-module/summary-tab/customer.section');
 
 describe('Quotes', function () {
     // pages
@@ -38,6 +38,7 @@ describe('Quotes', function () {
     var aeName = 'Test Account2';
     var scName = 'Test Account 3';
     var ocName = 'Test Account4';
+    var orderCreateDate = new Date("05/22/2017");
 
     // test data: customer details
     var customerName = "NANCY MASON";
@@ -65,8 +66,7 @@ describe('Quotes', function () {
         navPanel.logout();
     });
 
-
-    it('should be created via the New Quote button', function () {
+    xit('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -78,14 +78,14 @@ describe('Quotes', function () {
         verifyCustomerDetailsInSummaryTab();
     });
 
-    xit('should be searchable in Order Search tab', function () {
+    it('should be searchable in Order Search tab', function () {
         // search for the quote
         searchTab.searchFor(orderNumber)
             .findRowWithOrderNumber(orderNumber);
 
         // verify row details
-        // todo verify AE avatar
-        // todo verify SC avatar
+        expect(searchTab.getRowAE()).toEqual(aeName);
+        expect(searchTab.getRowSC()).toEqual(scName);
         expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderNumber);
         expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderName);
         expect(searchTab.getRowCustomerName()).toContain(customerName);
@@ -93,10 +93,9 @@ describe('Quotes', function () {
         expect(searchTab.getRowInHands()).toEqual(reqInHands);
         expect(searchTab.getRowFirmInHands()).toEqual(firmInHands);
         expect(searchTab.getRowStatus()).toEqual(OrderStatuses.quote);
-        // todo verify create date
-        // todo verify multi flag
-        // todo verify rush flag
-
+        expect(searchTab.getRowCreateDate()).toEqual(orderCreateDate);
+        expect(searchTab.rowShowsMultiFlag()).toBe(multiValue);
+        expect(searchTab.rowShowsRushFlag()).toBe(rushValue);
     });
 
     xit('should have a Quote Summary tab', function () {
@@ -144,6 +143,7 @@ describe('Quotes', function () {
             .selectSC(scName)
             .selectOC(ocName)
             .clickCreateOrder();
+        orderCreateDate = new Date();
         generalTab.click();
     };
 
