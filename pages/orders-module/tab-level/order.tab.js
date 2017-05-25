@@ -1,73 +1,89 @@
 'use strict';
+var WaitTime = require('../../../helpers/wait.times');
 
 var OrderTab = function () {
     // elements
+    var activeTab = $('.parent-tabs > .active');
+    var activeTabPane = $('.parent-tabs-content > .tab-pane.active');
     var orderName = $(".tab-title > span:nth-child(2)");
     var orderStatus = $("a.dropdown-toggle span.ng-binding");
     var reqInHandsDate = $('.nav.nav-pills + div .ng-binding');
     var firmInHandsDate = $('.nav.nav-pills + div + div .ng-binding');
-    var avatars = $$(".pull-right .media-wrapper");
-    var accountExecutive = avatars.get(0);
-    var salesCoordinator = avatars.get(1);
+    var accountExecutive = $(".pull-right .media-wrapper:nth-last-child(2)");
+    var salesCoordinator = $(".pull-right .media-wrapper:last-child");
     var orderNumber = $(".closeable .active span.ng-binding");
     var storeCode = $('.closeable .active span.ng-binding + .quiet');
     var customerName = $('.fa + .text-sm.text-small.ng-binding');
     var multiIcon = $('img[title="This order has multiple drop ships"]');
     var rushIcon = $('img[title="Hurry up! This is a Rush order!"]');
+    var cogIcon = $('.nav-pills .fa-cog');
+    var createQuoteBtn = element(by.buttonText('Create Quote'));
+    var createOrderBtn = element(by.buttonText('Create Order'));
+
+
+    // other vars
+    var EC = protractor.ExpectedConditions;
 
     this.getOrderName = function () {
-        return orderName.getText();
+        return activeTabPane.element(orderName.locator()).getText();
     };
 
     this.getOrderStatus = function () {
-        return orderStatus.getText();
+        return activeTabPane.element(orderStatus.locator()).getText();
     };
 
     this.getReqInHands = function () {
-        return reqInHandsDate.getText().then(function (strDate) {
+        return activeTabPane.element(reqInHandsDate.locator()).getText().then(function (strDate) {
             return new Date(strDate);
         });
     };
 
     this.getFirmInHands = function () {
-        return firmInHandsDate.getText().then(function (strDate) {
+        return activeTabPane.element(firmInHandsDate.locator()).getText().then(function (strDate) {
             return new Date(strDate);
         });
     };
 
     this.getAE = function () {
-        return accountExecutive.getAttribute('title');
+        return activeTabPane.element(accountExecutive.locator()).getAttribute('title');
     };
 
     this.getSC = function () {
-        return salesCoordinator.getAttribute('title');
+        return activeTabPane.element(salesCoordinator.locator()).getAttribute('title');
     };
 
     this.getOrderNumber = function () {
-        return orderNumber.getText();
+        return activeTab.element(orderNumber.locator()).getText();
     };
 
     this.getStoreCode = function () {
-        return storeCode.getText().then(function (text) {
+        return activeTab.element(storeCode.locator()).getText().then(function (text) {
             return text.toUpperCase();
         });
     };
 
     this.getCustomerName = function () {
-        return customerName.getText();
+        return activeTabPane.element(customerName.locator()).getText();
     };
 
     this.showsMultiIcon = function () {
-        return multiIcon.isDisplayed();
+        return activeTabPane.element(multiIcon.locator()).isPresent();
     };
 
     this.showsRushIcon = function () {
-        return rushIcon.isDisplayed();
+        return activeTabPane.element(rushIcon.locator()).isPresent();
     };
 
-    this.showsQuoteSummaryTab = function () {
-        return
-    }
+    this.cloneAsQuote = function () {
+        activeTabPane.element(cogIcon.locator()).click();
+        browser.wait(EC.visibilityOf(activeTabPane.element(createQuoteBtn.locator())), WaitTime.fiveSec);
+        createQuoteBtn.isDisplayed().then(function (isTrue) {
+            if (isTrue) {
+                console.log("Create Quote button is displayed");
+            }
+        });
+        // createQuoteBtn.click();
+    };
 };
 
 module.exports = OrderTab;

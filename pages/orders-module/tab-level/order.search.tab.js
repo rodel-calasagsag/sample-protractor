@@ -39,7 +39,7 @@ var OrderSearchTab = function () {
         searchField.sendKeys(query);
         searchBtn.click();
         this.click();
-        browser.wait(resultsToLoad(), WaitTime.halfMin, "No results were loaded after the specified waiting time");
+        browser.wait(untilResultsAreLoaded(), WaitTime.halfMin, "No results were loaded after the specified waiting time");
         return this;
     };
 
@@ -118,9 +118,31 @@ var OrderSearchTab = function () {
     };
 
     // methods
-    var resultsToLoad = function () {
+    var untilResultsAreLoaded = function () {
         return searchResults.count().then(function (count) {
             return count > 0;
+        });
+    };
+
+    this.clickRowWithOrderNumber = function (orderNum) {
+        searchResults.count().then(function (count) {
+            console.log("Number of matches returned = " + count);
+        });
+
+        var promisedRowWithOrderNum = searchResults.reduce(function (acc, row) {
+            if (acc) {
+                return acc;
+            }
+
+            return row.element(orderNumAndTitleSpan.locator()).getText().then(function (text) {
+                if (text.startsWith(orderNum)) {
+                    return row;
+                }
+            });
+        });
+
+        promisedRowWithOrderNum.then(function (row) {
+            row.element(orderNumAndTitleSpan.locator()).click();
         });
     };
 };

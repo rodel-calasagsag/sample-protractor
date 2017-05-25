@@ -103,9 +103,15 @@ describe('Quotes', function () {
         expect(searchTab.rowShowsRushFlag()).toBe(rushValue);
     });
 
-    xit('can be cloned', function () {
-        // todo complete this
-        expect(true).toBeTruthy();
+    it('can be cloned FROM an order', function () {
+        // test variables
+        var nonQuoteOrderNum = "13105";
+
+        // open a non-quote order
+        searchTab.searchFor(nonQuoteOrderNum)
+            .clickRowWithOrderNumber(nonQuoteOrderNum);
+        orderTab.cloneAsQuote();
+
     });
 
     xit('dummy 1', function () {
