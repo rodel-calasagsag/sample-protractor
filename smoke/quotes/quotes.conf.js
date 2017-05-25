@@ -1,5 +1,5 @@
 "use strict";
-var WaitTime = require('../../helpers/wait.times');
+// var WaitTime = require('../../helpers/wait.times');
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -10,6 +10,6 @@ exports.config = {
 
     onPrepare: function () {
         browser.driver.manage().window().maximize();
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = WaitTime.halfMin;
+        // jasmine.DEFAULT_TIMEOUT_INTERVAL = WaitTime.halfMin;
     }
 };

@@ -117,13 +117,6 @@ var OrderSearchTab = function () {
         return rowElement.element(rushFlag.locator()).isDisplayed();
     };
 
-    // methods
-    var untilResultsAreLoaded = function () {
-        return searchResults.count().then(function (count) {
-            return count > 0;
-        });
-    };
-
     this.clickRowWithOrderNumber = function (orderNum) {
         searchResults.count().then(function (count) {
             console.log("Number of matches returned = " + count);
@@ -143,6 +136,13 @@ var OrderSearchTab = function () {
 
         promisedRowWithOrderNum.then(function (row) {
             row.element(orderNumAndTitleSpan.locator()).click();
+        });
+    };
+
+    // methods
+    var untilResultsAreLoaded = function () {
+        return searchResults.count().then(function (count) {
+            return count > 0;
         });
     };
 };

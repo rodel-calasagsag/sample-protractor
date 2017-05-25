@@ -31,15 +31,16 @@ describe('Quotes', function () {
     var username = User.testAe2.username;
     var password = User.password;
     var orderNumber = '13139';
+    var nonQuoteOrderNum = "13105";
 
     // test data: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
     var description = 'CLONED from Order 17836 - Build Swag for Bing - Drawstring Packs';
-    var shipDate = new Date('05/30/2017');
-    var reqInHands = new Date('06/28/2017');
+    var shipDate = new Date('05/31/2017');
+    var reqInHands = new Date('06/13/2017');
     var firmInHands = new Date('08/04/2017');
     var rushValue = true;
-    var multiValue = true;
+    var multiValue = false;
     var aeName = 'Test Account2';
     var scName = 'Test Account 3';
     var ocName = 'Test Account4';
@@ -70,7 +71,8 @@ describe('Quotes', function () {
         navPanel.logout();
     });
 
-    it('should be created via the New Quote button', function () {
+    // spec 1
+    xit('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -83,7 +85,8 @@ describe('Quotes', function () {
         verifyCustomerDetailsInSummaryTab();
     });
 
-    it('should be searchable in Order Search tab', function () {
+    // spec 2
+    xit('should be searchable in Order Search tab', function () {
         // search for the quote
         searchTab.searchFor(orderNumber)
             .findRowWithOrderNumber(orderNumber);
@@ -98,20 +101,25 @@ describe('Quotes', function () {
         expect(searchTab.getRowInHands()).toEqual(reqInHands);
         expect(searchTab.getRowFirmInHands()).toEqual(firmInHands);
         expect(searchTab.getRowStatus()).toEqual(OrderStatus.quote);
-        expect(searchTab.getRowCreateDateTime()).toEqual(orderCreateDateTime.toString());
         expect(searchTab.rowShowsMultiFlag()).toBe(multiValue);
         expect(searchTab.rowShowsRushFlag()).toBe(rushValue);
+        expect(searchTab.getRowCreateDateTime()).toEqual(orderCreateDateTime.toString());
     });
 
+    // spec 3
     it('can be cloned FROM an order', function () {
-        // test variables
-        var nonQuoteOrderNum = "13105";
-
-        // open a non-quote order
         searchTab.searchFor(nonQuoteOrderNum)
             .clickRowWithOrderNumber(nonQuoteOrderNum);
         orderTab.cloneAsQuote();
-
+        fillUpQuoteGeneralForm();
+        verifyOrderTabDetails();
+        chooseCustomer();
+        getExpectedCustomerDetails();
+        verifyPresenceOfQuoteSummaryTab();
+        verifyCustomerDetailsInCustomerTab();
+        verifyCustomerDetailsInOrderTab();
+        verifyPresenceOfConvertToOrderBtnInSummaryTab();
+        verifyCustomerDetailsInSummaryTab();
     });
 
     xit('dummy 1', function () {
@@ -124,6 +132,23 @@ describe('Quotes', function () {
     });
 
     // utility methods
+
+    var fillUpQuoteGeneralForm = function () {
+        generalForm.typeOrderName(orderName)
+            .typeDescription(description)
+            .pickShipDate(shipDate)
+            .pickReqInHands(reqInHands)
+            .pickFirmInHands(firmInHands)
+            .selectRush(rushValue)
+            .selectMulti(multiValue)
+            .selectAE(aeName)
+            .selectSC(scName)
+            .selectOC(ocName)
+            .clickSaveChangesBtn();
+        setOrderCreateDateTime();
+        generalTab.click();
+    };
+
     var setOrderCreateDateTime = function () {
         orderCreateDateTime = new Date();
         orderCreateDateTime.setSeconds(0);

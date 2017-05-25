@@ -1,7 +1,7 @@
 'use strict';
 var Select = require('../../common/select');
 var DatePicker = require('../../common/date.picker');
-var BlockScreen = require('../../common/blockscreen');
+var WaitTime = require('../../../helpers/wait.times');
 
 var GeneralInfoForm = function () {
     // page elements
@@ -10,25 +10,26 @@ var GeneralInfoForm = function () {
     var shipDateField = element(by.id('shipDate'));
     var inHandsDateField = element(by.id('inhandsDate'));
     var firmInHandsDateField = element(by.id('firminhandsDate'));
-    var rushNoBtn = element.all(by.model('order.IsRush')).first();
-    var rushYesBtn = element.all(by.model('order.IsRush')).last();
-    var multiNoBtn = element.all(by.model('order.IsMultipleShipping')).first();
-    var multiYesBtn = element.all(by.model('order.IsMultipleShipping')).last();
+    var rushNoBtn = $('[title="Choose No if this is not a rush."]');
+    var rushYesBtn = $('[title="Choose Yes if this is a rush."]');
+    var multiNoBtn = $('[title="Choose No if this is not a multiple shipping order."]');
+    var multiYesBtn = $('[title="Choose Yes if this is a multiple shipping order."]');
     var customOrderBtn = element(by.cssContainingText('label.btn', 'Custom Order'));
     var bulkItemsBtn = element(by.cssContainingText('label.btn', 'Bulk Items'));
     var aeDropDown = element(by.id('accountManagerId'));
     var scDropDown = element(by.id('salesCoordinatorId'));
     var ocDropDown = element(by.id('orderCreatorId'));
     var createOrderBtn = element(by.buttonText('Create Order'));
+    var saveChangesBtn = element(by.buttonText('Save Changes'));
 
     // page objects
     var datePicker = new DatePicker();
-    var blockScreen = new BlockScreen();
 
     // expected condition
     var EC = protractor.ExpectedConditions;
 
     this.typeOrderName = function (orderName) {
+        browser.wait(EC.elementToBeClickable(orderNameField), WaitTime.fiveSec);
         orderNameField.clear();
         orderNameField.sendKeys(orderName);
         return this;
@@ -73,11 +74,6 @@ var GeneralInfoForm = function () {
         return this;
     };
 
-    /**
-     * Select the order type "Custom Order"
-     *
-     * @returns {GeneralInfoForm}
-     */
     this.selectCustomOrder = function () {
         customOrderBtn.click();
         return this;
@@ -106,11 +102,12 @@ var GeneralInfoForm = function () {
         return this;
     };
 
-    /**
-     * Click the Create Order button
-     */
     this.clickCreateOrder = function () {
         createOrderBtn.click();
+    };
+
+    this.clickSaveChangesBtn = function () {
+        saveChangesBtn.click();
     };
 };
 

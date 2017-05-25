@@ -74,15 +74,15 @@ var OrderTab = function () {
         return activeTabPane.element(rushIcon.locator()).isPresent();
     };
 
-    this.cloneAsQuote = function () {
+    this.clickCogIcon = function () {
         activeTabPane.element(cogIcon.locator()).click();
         browser.wait(EC.visibilityOf(activeTabPane.element(createQuoteBtn.locator())), WaitTime.fiveSec);
-        createQuoteBtn.isDisplayed().then(function (isTrue) {
-            if (isTrue) {
-                console.log("Create Quote button is displayed");
-            }
-        });
-        // createQuoteBtn.click();
+    };
+
+    this.cloneAsQuote = function () {
+        this.clickCogIcon();
+        createQuoteBtn.click();
+        browser.waitForAngular
     };
 };
 

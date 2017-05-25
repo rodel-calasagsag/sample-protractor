@@ -3,7 +3,9 @@ var WaitTime = require('../../helpers/wait.times');
 
 var DatePicker = function () {
     // page elements
+    var container = element(by.className('uib-datepicker-popup'));
     var todayBtn = element(by.buttonText('Today'));
+    var clearBtn = element(by.buttonText('Clear'));
     var leftBtn = element(by.className('glyphicon-chevron-left'));
     var rightBtn = element(by.className('glyphicon-chevron-right'));
     var title = element(by.css('button.uib-title'));
@@ -20,7 +22,7 @@ var DatePicker = function () {
      */
     this.pick = function (dateField, targetDate) {
         dateField.click();
-        todayBtn.click();
+        clearBtn.click();
         dateField.click();
         goToTargetMonth(targetDate);
         clickDayBtn(targetDate.getDate());
@@ -44,21 +46,24 @@ var DatePicker = function () {
                     monthStart = index;
                 }
 
-                return innerNum === targetNum && index >= monthStart;
+                if (innerNum === targetNum && index >= monthStart) {
+                    return dayBtn;
+                }
             });
         }).first().click();
+        browser.wait(EC.stalenessOf(container), WaitTime.oneSec);
     };
 
     var goToTargetMonth = function (targetDate) {
         var month = targetDate.toLocaleString("en-us", {month: "long"});
-        var tillMonthUpdates = EC.textToBePresentInElement(title, month);
+        var untilTargetMonthArrives = EC.textToBePresentInElement(title, month);
         var monthDiff = computeMonthDiff(targetDate);
         var arrowBtn = monthDiff > 0 ? rightBtn : leftBtn;
 
         for (var i = 0; i < Math.abs(monthDiff); i++) {
             arrowBtn.click();
         }
-        browser.wait(tillMonthUpdates, WaitTime.fiveSec);
+        browser.wait(untilTargetMonthArrives, WaitTime.fiveSec);
     };
 
     var computeMonthDiff = function (targetDate) {
