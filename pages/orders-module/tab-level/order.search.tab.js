@@ -7,7 +7,7 @@ var WaitTime = require('../../../helpers/wait.times');
  */
 var OrderSearchTab = function () {
     // elements
-    var tab = element(by.className('searchtab '));
+    var tab = element(by.className('searchtab'));
     var newQuoteBtn = element(by.buttonText('New Quote'));
     var searchField = element(by.id('searchTicketsTerm'));
     var searchBtn = $('.input-group-btn .btn-default');
@@ -49,14 +49,12 @@ var OrderSearchTab = function () {
         return this;
     };
 
-    this.findRowWithOrderNumber = function (promisedOrderNum) {
+    this.findRowWithOrderNumber = function (orderNumber) {
         rowElement = searchResults.filter(function (row) {
             return row.element(orderNumAndTitleSpan.locator()).getText().then(function (spanText) {
-                return promisedOrderNum.then(function (strOrderNum) {
-                    if (spanText.startsWith(strOrderNum)) {
-                        return row;
-                    }
-                });
+                if (spanText.startsWith(orderNumber)) {
+                    return row;
+                }
             });
         }).first();
     };

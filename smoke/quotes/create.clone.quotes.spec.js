@@ -30,8 +30,9 @@ describe('Quotes', function () {
     var baseUrl = BaseUrl.qas.orders;
     var username = User.testAe2.username;
     var password = User.password;
-    var orderNumber = '13139';
-    var nonQuoteOrderNum = "13105";
+    var newQuoteNumber;
+    var clonedQuoteNumber;
+    var oldOrderNumber = "13157";
 
     // test data: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
@@ -72,7 +73,7 @@ describe('Quotes', function () {
     });
 
     // spec 1
-    xit('should be created via the New Quote button', function () {
+    it('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -86,15 +87,15 @@ describe('Quotes', function () {
     });
 
     // spec 2
-    xit('should be searchable in Order Search tab', function () {
+    it('should be searchable in Order Search tab', function () {
         // search for the quote
-        searchTab.searchFor(orderNumber)
-            .findRowWithOrderNumber(orderNumber);
+        searchTab.searchFor(newQuoteNumber)
+            .findRowWithOrderNumber(newQuoteNumber);
 
         // verify row details
         expect(searchTab.getRowAE()).toEqual(aeName);
         expect(searchTab.getRowSC()).toEqual(scName);
-        expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderNumber);
+        expect(searchTab.getRowOrderNumberAndTitle()).toContain(newQuoteNumber);
         expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderName);
         expect(searchTab.getRowCustomerName()).toContain(customerName);
         expect(searchTab.getRowStoreCode()).toEqual(customerStore);
@@ -108,18 +109,33 @@ describe('Quotes', function () {
 
     // spec 3
     it('can be cloned FROM an order', function () {
-        searchTab.searchFor(nonQuoteOrderNum)
-            .clickRowWithOrderNumber(nonQuoteOrderNum);
+        searchTab.searchFor(oldOrderNumber)
+            .clickRowWithOrderNumber(oldOrderNumber);
         orderTab.cloneAsQuote();
-        fillUpQuoteGeneralForm();
-        verifyOrderTabDetails();
-        chooseCustomer();
-        getExpectedCustomerDetails();
-        verifyPresenceOfQuoteSummaryTab();
-        verifyCustomerDetailsInCustomerTab();
-        verifyCustomerDetailsInOrderTab();
-        verifyPresenceOfConvertToOrderBtnInSummaryTab();
-        verifyCustomerDetailsInSummaryTab();
+        clonedQuoteNumber = orderTab.getOrderNumber().then(function (text) {
+            return text;
+        });
+
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
+    });
+
+    // spec 4
+    it('can be cloned TO an order', function () {
+        searchTab.searchFor(newQuoteNumber)
+            .clickRowWithOrderNumber(newQuoteNumber);
+        orderTab.cloneAsOrder();
+
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.incomplete);
+    });
+
+    xit("can be converted to an order ", function () {
+        // todo completeProductInfo();
+        // todo completeShippingInfo();
+        // todo completePaymentInfo();
+        // todo convertQuoteToOrder();
+        // todo verify order status changes to Incomplete in order tab and search tab
+        // todo verify Quote Summary tab becomes read only
+        // todo verify convert to order button disappears
     });
 
     xit('dummy 1', function () {
@@ -133,29 +149,15 @@ describe('Quotes', function () {
 
     // utility methods
 
-    var fillUpQuoteGeneralForm = function () {
-        generalForm.typeOrderName(orderName)
-            .typeDescription(description)
-            .pickShipDate(shipDate)
-            .pickReqInHands(reqInHands)
-            .pickFirmInHands(firmInHands)
-            .selectRush(rushValue)
-            .selectMulti(multiValue)
-            .selectAE(aeName)
-            .selectSC(scName)
-            .selectOC(ocName)
-            .clickSaveChangesBtn();
-        setOrderCreateDateTime();
-        generalTab.click();
-    };
-
     var setOrderCreateDateTime = function () {
         orderCreateDateTime = new Date();
         orderCreateDateTime.setSeconds(0);
     };
 
     var verifyOrderTabDetails = function () {
-        orderNumber = orderTab.getOrderNumber();
+        newQuoteNumber = orderTab.getOrderNumber().then(function (text) {
+            return text;
+        });
         expect(orderTab.getOrderName()).toEqual(orderName);
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
         expect(orderTab.getReqInHands()).toEqual(reqInHands);

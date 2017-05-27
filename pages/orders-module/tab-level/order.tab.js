@@ -82,7 +82,11 @@ var OrderTab = function () {
     this.cloneAsQuote = function () {
         this.clickCogIcon();
         createQuoteBtn.click();
-        browser.waitForAngular
+    };
+
+    this.cloneAsOrder = function () {
+        this.clickCogIcon();
+        createOrderBtn.click();
     };
 };
 
