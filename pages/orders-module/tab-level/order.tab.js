@@ -20,7 +20,6 @@ var OrderTab = function () {
     var createQuoteBtn = element(by.buttonText('Create Quote'));
     var createOrderBtn = element(by.buttonText('Create Order'));
 
-
     // other vars
     var EC = protractor.ExpectedConditions;
 

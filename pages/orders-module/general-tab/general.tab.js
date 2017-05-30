@@ -5,6 +5,7 @@ var GeneralTab = function () {
     // constants
     const DETAILS_LOCATOR = ".section-content > .property";
     const LABEL_ORDER_NAME = "Order Name";
+    const LABEL_CUSTOMER_ORDER_NAME = "Customer Order Name";
     const LABEL_DESCRIPTION = "Description";
     const LABEL_SHIP_DATE = "Ship Date";
     const LABEL_REQ_IN_HANDS = "Requested In Hands Date";
@@ -19,6 +20,7 @@ var GeneralTab = function () {
     var tabTitle = element(by.cssContainingText('.legend', 'General Info'));
     var iconedValues = $$('.label.wide + .value.buffer-top');
     var orderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_NAME));
+    var customerOrderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_CUSTOMER_ORDER_NAME));
     var description = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_DESCRIPTION));
     var shipDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SHIP_DATE));
     var reqInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_REQ_IN_HANDS));
@@ -51,6 +53,14 @@ var GeneralTab = function () {
     this.getOrderName = function () {
         return orderName.getText().then(function (text) {
             var heading = LABEL_ORDER_NAME.toUpperCase();
+
+            return text.replace(heading, NULL_STRING).trim();
+        });
+    };
+
+    this.getCustomerOrderName = function () {
+        return customerOrderName.getText().then(function (text) {
+            var heading = LABEL_CUSTOMER_ORDER_NAME.toUpperCase();
 
             return text.replace(heading, NULL_STRING).trim();
         });

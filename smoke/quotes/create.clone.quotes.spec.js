@@ -14,19 +14,8 @@ var CustomerSection = require('../../pages/orders-module/summary-tab/customer.se
 var QuoteSummaryTab = require('../../pages/orders-module/quote-summary-tab/quote.summary.tab');
 
 describe('Quotes', function () {
-    // pages
-    var loginPage = new LoginPage();
-    var navPanel = new NavPanel();
-    var searchTab = new OrderSearchTab();
-    var generalForm = new GeneralInfoForm();
-    var generalTab = new GeneralTab();
-    var orderTab = new OrderTab();
-    var customerTab = new CustomerTab();
-    var summaryTab = new SummaryTab();
-    var customerSummary = new CustomerSection();
-    var quoteTab = new QuoteSummaryTab();
 
-    // suite variables
+    // domain: suite values
     var baseUrl = BaseUrl.qas.orders;
     var username = User.testAe2.username;
     var password = User.password;
@@ -34,9 +23,10 @@ describe('Quotes', function () {
     var clonedQuoteNumber;
     var oldOrderNumber = "13157";
 
-    // test data: general info
+    // domain: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
-    var description = 'CLONED from Order 17836 - Build Swag for Bing - Drawstring Packs';
+    var customerOrderName = "GoDaddy TA Ambassador Tees (Customer Order Name)";
+    var description = 'Description for: Build Swag for Bing - Drawstring Packs';
     var shipDate = new Date('05/31/2017');
     var reqInHands = new Date('06/13/2017');
     var firmInHands = new Date('08/04/2017');
@@ -47,7 +37,7 @@ describe('Quotes', function () {
     var ocName = 'Test Account4';
     var orderCreateDateTime = new Date("12:04 PM 05/22/2017");
 
-    // test data: customer details
+    // domain: customer details
     var customerName = "NANCY MASON";
     var customerSap = "0001365875";
     var customerEmail = "NONE@ECOMPANYSTORE.COM";
@@ -55,6 +45,18 @@ describe('Quotes', function () {
     var customerStore = "CIG";
     var customerCompany = "ECS TEST DATA";
     var billingAddress;
+
+    // page objects
+    var loginPage = new LoginPage();
+    var navPanel = new NavPanel();
+    var searchTab = new OrderSearchTab();
+    var generalForm = new GeneralInfoForm();
+    var generalTab = new GeneralTab();
+    var orderTab = new OrderTab();
+    var customerTab = new CustomerTab();
+    var summaryTab = new SummaryTab();
+    var customerSummary = new CustomerSection();
+    var quoteTab = new QuoteSummaryTab();
 
     /**
      * Login as AE and go to order search tab
@@ -136,6 +138,8 @@ describe('Quotes', function () {
         // todo verify order status changes to Incomplete in order tab and search tab
         // todo verify Quote Summary tab becomes read only
         // todo verify convert to order button disappears
+
+
     });
 
     xit('dummy 1', function () {
@@ -155,9 +159,10 @@ describe('Quotes', function () {
     };
 
     var verifyOrderTabDetails = function () {
-        newQuoteNumber = orderTab.getOrderNumber().then(function (text) {
-            return text;
-        });
+        // fixme assign a string value instead of a promise
+        newQuoteNumber = orderTab.getOrderNumber();
+        console.log("newQuoteNumber = " + newQuoteNumber);
+
         expect(orderTab.getOrderName()).toEqual(orderName);
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
         expect(orderTab.getReqInHands()).toEqual(reqInHands);
@@ -171,6 +176,7 @@ describe('Quotes', function () {
 
     var verifySavedGeneralInfo = function () {
         expect(generalTab.getOrderName()).toEqual(orderName);
+        expect(generalTab.getCustomerOrderName()).toEqual(customerOrderName);
         expect(generalTab.getDescription()).toEqual(description);
         expect(generalTab.getShipDate()).toEqual(shipDate);
         expect(generalTab.getReqInHands()).toEqual(reqInHands);
@@ -185,6 +191,7 @@ describe('Quotes', function () {
     var createNewQuote = function () {
         searchTab.clickNewQuote();
         generalForm.typeOrderName(orderName)
+            .typeCustomerOrderName(customerOrderName)
             .typeDescription(description)
             .pickShipDate(shipDate)
             .pickReqInHands(reqInHands)

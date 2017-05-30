@@ -21,6 +21,7 @@ var GeneralInfoForm = function () {
     var ocDropDown = element(by.id('orderCreatorId'));
     var createOrderBtn = element(by.buttonText('Create Order'));
     var saveChangesBtn = element(by.buttonText('Save Changes'));
+    var customerOrderNameField = element(by.id('orderCustomerLabel'));
 
     // page objects
     var datePicker = new DatePicker();
@@ -109,6 +110,11 @@ var GeneralInfoForm = function () {
     this.clickSaveChangesBtn = function () {
         saveChangesBtn.click();
     };
+    this.typeCustomerOrderName = function (customerOrderName) {
+        customerOrderNameField.clear();
+        customerOrderNameField.sendKeys(customerOrderName);
+        return this;
+    }
 };
 
 module.exports = GeneralInfoForm;
