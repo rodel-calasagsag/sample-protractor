@@ -5,7 +5,7 @@ var Select = function (dropDownElement) {
     this.byText = function (text) {
         var optionTag = 'option';
 
-        dropDownElement.element(by.cssContainingText(optionTag, text)).click();
+        element(dropDownElement.locator()).element(by.cssContainingText(optionTag, text)).click();
     };
 };
 

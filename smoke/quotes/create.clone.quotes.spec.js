@@ -19,8 +19,7 @@ describe('Quotes', function () {
     var baseUrl = BaseUrl.qas.orders;
     var username = User.testAe2.username;
     var password = User.password;
-    var newQuoteNumber;
-    var clonedQuoteNumber;
+    var newOrderNumber;
     var oldOrderNumber = "13157";
 
     // domain: general info
@@ -75,7 +74,7 @@ describe('Quotes', function () {
     });
 
     // spec 1
-    it('should be created via the New Quote button', function () {
+    xit('should be created via the New Quote button', function () {
         createNewQuote();
         verifySavedGeneralInfo();
         verifyOrderTabDetails();
@@ -89,15 +88,15 @@ describe('Quotes', function () {
     });
 
     // spec 2
-    it('should be searchable in Order Search tab', function () {
+    xit('should be searchable in Order Search tab', function () {
         // search for the quote
-        searchTab.searchFor(newQuoteNumber)
-            .findRowWithOrderNumber(newQuoteNumber);
+        searchTab.searchFor(newOrderNumber)
+            .findRowWithOrderNumber(newOrderNumber);
 
         // verify row details
         expect(searchTab.getRowAE()).toEqual(aeName);
         expect(searchTab.getRowSC()).toEqual(scName);
-        expect(searchTab.getRowOrderNumberAndTitle()).toContain(newQuoteNumber);
+        expect(searchTab.getRowOrderNumberAndTitle()).toContain(newOrderNumber);
         expect(searchTab.getRowOrderNumberAndTitle()).toContain(orderName);
         expect(searchTab.getRowCustomerName()).toContain(customerName);
         expect(searchTab.getRowStoreCode()).toEqual(customerStore);
@@ -110,22 +109,22 @@ describe('Quotes', function () {
     });
 
     // spec 3
-    xit('can be cloned FROM an order', function () {
-        searchTab.searchFor(oldOrderNumber)
-            .clickRowWithOrderNumber(oldOrderNumber);
-        orderTab.cloneAsQuote();
-        orderTab.getOrderNumber().then(function (text) {
-            clonedQuoteNumber = text;
-            console.log("Order number of clone = " + clonedQuoteNumber);
-        });
-
-        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
+    it('can be cloned FROM an order', function () {
+        cloneOrderAsQuote();
+        fillUpGeneralForm();
+        generalForm.clickSaveChanges();
+        setOrderCreateDateTime();
+        // fixme elements can't be located after saving general tab at this point
+        // generalTab.click();
+        verifyOrderTabDetails();
+        verifyPresenceOfQuoteSummaryTab();
+        verifyPresenceOfConvertToOrderBtnInSummaryTab();
     });
 
     // spec 4
     xit('can be cloned TO an order', function () {
-        searchTab.searchFor(newQuoteNumber)
-            .clickRowWithOrderNumber(newQuoteNumber);
+        searchTab.searchFor(newOrderNumber)
+            .clickRowWithOrderNumber(newOrderNumber);
         orderTab.cloneAsOrder();
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.incomplete);
@@ -144,6 +143,18 @@ describe('Quotes', function () {
 
     // utility methods
 
+    var cloneOrderAsQuote = function () {
+        searchTab.searchFor(oldOrderNumber)
+            .clickRowWithOrderNumber(oldOrderNumber);
+        orderTab.cloneAsQuote();
+        orderTab.getOrderNumber().then(function (text) {
+            newOrderNumber = text;
+            console.log("Order number of clone = " + newOrderNumber);
+        });
+
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
+    };
+
     var setOrderCreateDateTime = function () {
         orderCreateDateTime = new Date();
         orderCreateDateTime.setSeconds(0);
@@ -151,8 +162,8 @@ describe('Quotes', function () {
 
     var verifyOrderTabDetails = function () {
         orderTab.getOrderNumber().then(function (text) {
-            newQuoteNumber = text;
-            console.log("Order Number of newly created quote = " + newQuoteNumber);
+            newOrderNumber = text;
+            console.log("Order Number of newly created quote = " + newOrderNumber);
         });
 
         expect(orderTab.getOrderName()).toEqual(orderName);
@@ -180,8 +191,7 @@ describe('Quotes', function () {
         expect(generalTab.getOC()).toEqual(ocName);
     };
 
-    var createNewQuote = function () {
-        searchTab.clickNewQuote();
+    var fillUpGeneralForm = function () {
         generalForm.typeOrderName(orderName)
             .typeCustomerOrderName(customerOrderName)
             .typeDescription(description)
@@ -192,8 +202,13 @@ describe('Quotes', function () {
             .selectMulti(multiValue)
             .selectAE(aeName)
             .selectSC(scName)
-            .selectOC(ocName)
-            .clickCreateOrder();
+            .selectOC(ocName);
+    };
+
+    var createNewQuote = function () {
+        searchTab.clickNewQuote();
+        fillUpGeneralForm();
+        generalForm.clickCreateOrder();
         setOrderCreateDateTime();
         generalTab.click();
     };
@@ -235,6 +250,6 @@ describe('Quotes', function () {
     };
 
     var verifyPresenceOfQuoteSummaryTab = function () {
-        expect(quoteTab.isDisplayed()).toBeTruthy();
+        expect(quoteTab.isPresent()).toBeTruthy();
     };
 });

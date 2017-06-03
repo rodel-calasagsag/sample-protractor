@@ -17,7 +17,7 @@ var SummaryTab = function () {
     };
 
     this.convertToOrderBtnDisplayed = function () {
-        return convertToOrderBtn.isDisplayed();
+        return convertToOrderBtn.isPresent();
     };
 };
 

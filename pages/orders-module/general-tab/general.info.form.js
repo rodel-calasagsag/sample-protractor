@@ -6,6 +6,7 @@ var WaitTime = require('../../../helpers/wait.times');
 var GeneralInfoForm = function () {
     // page elements
     var orderNameField = element(by.id('orderName'));
+    var customerOrderNameField = element(by.id('orderCustomerLabel'));
     var descriptionField = element(by.id('description'));
     var shipDateField = element(by.id('shipDate'));
     var inHandsDateField = element(by.id('inhandsDate'));
@@ -19,9 +20,9 @@ var GeneralInfoForm = function () {
     var aeDropDown = element(by.id('accountManagerId'));
     var scDropDown = element(by.id('salesCoordinatorId'));
     var ocDropDown = element(by.id('orderCreatorId'));
-    var createOrderBtn = element(by.buttonText('Create Order'));
+    var createOrderBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Create Order'));
+    var editBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Edit'));
     var saveChangesBtn = element(by.buttonText('Save Changes'));
-    var customerOrderNameField = element(by.id('orderCustomerLabel'));
 
     // page objects
     var datePicker = new DatePicker();
@@ -107,9 +108,10 @@ var GeneralInfoForm = function () {
         createOrderBtn.click();
     };
 
-    this.clickSaveChangesBtn = function () {
+    this.clickSaveChanges = function () {
         saveChangesBtn.click();
     };
+
     this.typeCustomerOrderName = function (customerOrderName) {
         customerOrderNameField.clear();
         customerOrderNameField.sendKeys(customerOrderName);

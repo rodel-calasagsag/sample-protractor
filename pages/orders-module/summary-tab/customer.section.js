@@ -14,7 +14,7 @@ var CustomerSection = function () {
     };
 
     this.isCompleted = function () {
-        return completedFlag.isDisplayed();
+        return completedFlag.isPresent();
     };
 
     this.getSapNumber = function () {

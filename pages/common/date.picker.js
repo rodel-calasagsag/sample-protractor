@@ -14,6 +14,16 @@ var DatePicker = function () {
     // other vars
     var EC = protractor.ExpectedConditions;
 
+    var openDatePicker = function (dateField) {
+        dateField.click();
+        browser.wait(EC.visibilityOf(container), WaitTime.fiveSec);
+    };
+
+    var clearDate = function () {
+        clearBtn.click();
+        browser.wait(EC.stalenessOf(container), WaitTime.fiveSec);
+    };
+
     /**
      * Pick a date from the date picker
      *
@@ -21,9 +31,9 @@ var DatePicker = function () {
      * @param targetDate Date to be picked
      */
     this.pick = function (dateField, targetDate) {
-        dateField.click();
-        clearBtn.click();
-        dateField.click();
+        openDatePicker(dateField);
+        clearDate();
+        openDatePicker(dateField);
         goToTargetMonth(targetDate);
         clickDayBtn(targetDate.getDate());
     };
@@ -34,23 +44,29 @@ var DatePicker = function () {
      * @param targetNum Number on the button to be clicked
      */
     var clickDayBtn = function (targetNum) {
-        var monthStart;
+        var monthHasStarted = false;
 
-        dayButtons.filter(function (dayBtn, index) {
-            var inFirstWk = index < 7;
+        dayButtons.reduce(function (acc, dayBtn) {
+            if (typeof acc !== 'undefined') {
+                return acc;
+            }
 
             return dayBtn.getText().then(function (innerText) {
                 var innerNum = Number(innerText);
 
-                if (inFirstWk && innerNum === 1) {
-                    monthStart = index;
+                if (innerNum === 1) {
+                    monthHasStarted = true;
                 }
 
-                if (innerNum === targetNum && index >= monthStart) {
+                if (monthHasStarted && innerNum === targetNum) {
+                    console.log("Found the target number: " + innerText);
                     return dayBtn;
                 }
             });
-        }).first().click();
+
+        }).then(function (dayBtn) {
+            dayBtn.click();
+        });
         browser.wait(EC.stalenessOf(container), WaitTime.oneSec);
     };
 
