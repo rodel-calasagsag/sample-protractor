@@ -108,11 +108,11 @@ var OrderSearchTab = function () {
     };
 
     this.rowShowsMultiFlag = function () {
-        return rowElement.element(multiFlag.locator()).isDisplayed();
+        return rowElement.element(multiFlag.locator()).isPresent();
     };
 
     this.rowShowsRushFlag = function () {
-        return rowElement.element(rushFlag.locator()).isDisplayed();
+        return rowElement.element(rushFlag.locator()).isPresent();
     };
 
     this.clickRowWithOrderNumber = function (orderNum) {

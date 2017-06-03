@@ -25,11 +25,11 @@ describe('Quotes', function () {
 
     // domain: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
-    var customerOrderName = "GoDaddy TA Ambassador Tees (Customer Order Name)";
+    var customerOrderName = "GoDaddy TA Ambassador Tees (Customr Ordr Nme)";
     var description = 'Description for: Build Swag for Bing - Drawstring Packs';
-    var shipDate = new Date('05/31/2017');
-    var reqInHands = new Date('06/13/2017');
-    var firmInHands = new Date('08/04/2017');
+    var shipDate = new Date('06/26/2017');
+    var reqInHands = new Date('07/14/2017');
+    var firmInHands = new Date('08/31/2017');
     var rushValue = true;
     var multiValue = false;
     var aeName = 'Test Account2';
@@ -110,19 +110,20 @@ describe('Quotes', function () {
     });
 
     // spec 3
-    it('can be cloned FROM an order', function () {
+    xit('can be cloned FROM an order', function () {
         searchTab.searchFor(oldOrderNumber)
             .clickRowWithOrderNumber(oldOrderNumber);
         orderTab.cloneAsQuote();
-        clonedQuoteNumber = orderTab.getOrderNumber().then(function (text) {
-            return text;
+        orderTab.getOrderNumber().then(function (text) {
+            clonedQuoteNumber = text;
+            console.log("Order number of clone = " + clonedQuoteNumber);
         });
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
     });
 
     // spec 4
-    it('can be cloned TO an order', function () {
+    xit('can be cloned TO an order', function () {
         searchTab.searchFor(newQuoteNumber)
             .clickRowWithOrderNumber(newQuoteNumber);
         orderTab.cloneAsOrder();
@@ -130,6 +131,7 @@ describe('Quotes', function () {
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.incomplete);
     });
 
+    // spec 5
     xit("can be converted to an order ", function () {
         // todo completeProductInfo();
         // todo completeShippingInfo();
@@ -138,17 +140,6 @@ describe('Quotes', function () {
         // todo verify order status changes to Incomplete in order tab and search tab
         // todo verify Quote Summary tab becomes read only
         // todo verify convert to order button disappears
-
-
-    });
-
-    xit('dummy 1', function () {
-        var date1 = new Date("03:51 PM 05/24/2017");
-        var date2 = new Date("05/24/2017");
-        date2.setHours(15);
-        date2.setMinutes(51);
-
-        expect(date1).toEqual(date2);
     });
 
     // utility methods
@@ -159,9 +150,10 @@ describe('Quotes', function () {
     };
 
     var verifyOrderTabDetails = function () {
-        // fixme assign a string value instead of a promise
-        newQuoteNumber = orderTab.getOrderNumber();
-        console.log("newQuoteNumber = " + newQuoteNumber);
+        orderTab.getOrderNumber().then(function (text) {
+            newQuoteNumber = text;
+            console.log("Order Number of newly created quote = " + newQuoteNumber);
+        });
 
         expect(orderTab.getOrderName()).toEqual(orderName);
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
