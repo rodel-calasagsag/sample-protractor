@@ -13,7 +13,6 @@ var NavPanel = function () {
 
     this.goToOrders = function () {
         ordersModule.click();
-        return new OrdersModule();
     };
 };
 

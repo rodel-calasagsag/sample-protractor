@@ -30,6 +30,8 @@ var GeneralTab = function () {
     var accountExecutive = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ACCOUNT_EXECUTIVE));
     var salesCoordinator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SALES_COORDINATOR));
     var orderCreator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_CREATOR));
+    var editBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Edit'));
+
 
     // other fields
     var EC = protractor.ExpectedConditions;
@@ -42,7 +44,6 @@ var GeneralTab = function () {
     this.click = function () {
         tab.click();
         browser.wait(EC.visibilityOf(tabTitle), WaitTimes.fiveSec);
-        return this;
     };
 
     /**
@@ -132,6 +133,10 @@ var GeneralTab = function () {
         return orderCreator.getText().then(function (text) {
             return text.replace(LABEL_ORDER_CREATOR.toUpperCase(), NULL_STRING).trim();
         });
+    };
+
+    this.clickEdit = function () {
+        editBtn.click();
     };
 };
 

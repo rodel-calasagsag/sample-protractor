@@ -40,7 +40,6 @@ var OrderSearchTab = function () {
         searchBtn.click();
         this.click();
         browser.wait(untilResultsAreLoaded(), WaitTime.halfMin, "No results were loaded after the specified waiting time");
-        return this;
     };
 
     this.click = function () {

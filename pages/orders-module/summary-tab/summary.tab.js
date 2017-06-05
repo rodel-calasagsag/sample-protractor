@@ -12,8 +12,6 @@ var SummaryTab = function () {
 
     this.click = function () {
         tab.click();
-        browser.wait(EC.visibilityOf(zFeeLine), WaitTime.fiveSec);
-        return this;
     };
 
     this.convertToOrderBtnDisplayed = function () {

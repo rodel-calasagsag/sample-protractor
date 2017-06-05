@@ -20,8 +20,6 @@ var LoginPage = function () {
         this.typeUsername(username);
         this.typePassword(password);
         loginBtn.click();
-
-        return new NavPanel();
     };
 
     this.typeUsername = function (username) {

@@ -12,6 +12,7 @@ var CustomerTab = require('../../pages/orders-module/customer.tab');
 var SummaryTab = require('../../pages/orders-module/summary-tab/summary.tab');
 var CustomerSection = require('../../pages/orders-module/summary-tab/customer.section');
 var QuoteSummaryTab = require('../../pages/orders-module/quote-summary-tab/quote.summary.tab');
+var OrdersModule = require('../../pages/orders-module/orders.module');
 
 describe('Quotes', function () {
 
@@ -21,6 +22,7 @@ describe('Quotes', function () {
     var password = User.password;
     var newOrderNumber;
     var oldOrderNumber = "13157";
+    var quoteClonedFromOrder;
 
     // domain: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
@@ -37,12 +39,12 @@ describe('Quotes', function () {
     var orderCreateDateTime = new Date("12:04 PM 05/22/2017");
 
     // domain: customer details
-    var customerName = "NANCY MASON";
+    var customerName;
     var customerSap = "0001365875";
-    var customerEmail = "NONE@ECOMPANYSTORE.COM";
-    var customerPhone = "678-942-3100";
-    var customerStore = "CIG";
-    var customerCompany = "ECS TEST DATA";
+    var customerEmail;
+    var customerPhone;
+    var customerStore;
+    var customerCompany;
     var billingAddress;
 
     // page objects
@@ -56,14 +58,15 @@ describe('Quotes', function () {
     var summaryTab = new SummaryTab();
     var customerSummary = new CustomerSection();
     var quoteTab = new QuoteSummaryTab();
+    var ordersModule = new OrdersModule();
 
     /**
      * Login as AE and go to order search tab
      */
     beforeEach(function () {
         loginPage.login(baseUrl, username, password);
-        navPanel.goToOrders()
-            .goToSearchTab();
+        navPanel.goToOrders();
+        ordersModule.goToSearchTab();
     });
 
     /**
@@ -109,19 +112,30 @@ describe('Quotes', function () {
     });
 
     // spec 3
-    it('can be cloned FROM an order', function () {
+    xit('can be cloned FROM an order', function () {
         cloneOrderAsQuote();
-        fillUpGeneralForm();
-        generalForm.clickSaveChanges();
-        setOrderCreateDateTime();
-        // fixme elements can't be located after saving general tab at this point
-        // generalTab.click();
-        verifyOrderTabDetails();
-        verifyPresenceOfQuoteSummaryTab();
-        verifyPresenceOfConvertToOrderBtnInSummaryTab();
+        orderTab.getOrderNumber().then(function (text) {
+            quoteClonedFromOrder = text;
+            console.log('Order number of quote cloned from an order: ' + quoteClonedFromOrder);
+        });
+
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
     });
 
     // spec 4
+    xit('cloned FROM an order has Quote has a Quote Summary Tab and Convert to Order button', function () {
+        searchTab.searchFor(quoteClonedFromOrder);
+        searchTab.clickRowWithOrderNumber(quoteClonedFromOrder);
+        fillUpGeneralForm();
+        generalForm.clickSaveChanges();
+        summaryTab.click();
+
+        expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
+        expect(quoteTab.isPresent()).toBeTruthy();
+        expect(summaryTab.convertToOrderBtnDisplayed()).toBeTruthy();
+    });
+
+    // spec 5
     xit('can be cloned TO an order', function () {
         searchTab.searchFor(newOrderNumber)
             .clickRowWithOrderNumber(newOrderNumber);
@@ -130,7 +144,7 @@ describe('Quotes', function () {
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.incomplete);
     });
 
-    // spec 5
+    // spec 6
     xit("can be converted to an order ", function () {
         // todo completeProductInfo();
         // todo completeShippingInfo();
@@ -144,8 +158,8 @@ describe('Quotes', function () {
     // utility methods
 
     var cloneOrderAsQuote = function () {
-        searchTab.searchFor(oldOrderNumber)
-            .clickRowWithOrderNumber(oldOrderNumber);
+        searchTab.searchFor(oldOrderNumber);
+        searchTab.clickRowWithOrderNumber(oldOrderNumber);
         orderTab.cloneAsQuote();
         orderTab.getOrderNumber().then(function (text) {
             newOrderNumber = text;
@@ -192,17 +206,17 @@ describe('Quotes', function () {
     };
 
     var fillUpGeneralForm = function () {
-        generalForm.typeOrderName(orderName)
-            .typeCustomerOrderName(customerOrderName)
-            .typeDescription(description)
-            .pickShipDate(shipDate)
-            .pickReqInHands(reqInHands)
-            .pickFirmInHands(firmInHands)
-            .selectRush(rushValue)
-            .selectMulti(multiValue)
-            .selectAE(aeName)
-            .selectSC(scName)
-            .selectOC(ocName);
+        generalForm.selectOC(ocName);
+        generalForm.typeOrderName(orderName);
+        generalForm.typeCustomerOrderName(customerOrderName);
+        generalForm.typeDescription(description);
+        generalForm.pickShipDate(shipDate);
+        generalForm.pickReqInHands(reqInHands);
+        generalForm.pickFirmInHands(firmInHands);
+        generalForm.selectRush(rushValue);
+        generalForm.selectMulti(multiValue);
+        generalForm.selectAE(aeName);
+        generalForm.selectSC(scName);
     };
 
     var createNewQuote = function () {
