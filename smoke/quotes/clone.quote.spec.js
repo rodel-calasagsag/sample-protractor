@@ -67,16 +67,14 @@ describe('Quote', function () {
     // spec 1
     it('can be cloned FROM an order', function () {
         cloneOrderAsQuote();
-        orderTab.getOrderNumber().then(function (text) {
-            quoteClonedFromOrder = text;
-            console.log('Order number of quote cloned from an order: ' + quoteClonedFromOrder);
-        });
+        fillUpGeneralForm();
+        generalForm.clickSaveChanges();
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
     });
 
     // spec 2
-    it('cloned FROM an order has Quote has a Quote Summary Tab and Convert to Order button', function () {
+    xit('cloned FROM an order has Quote has a Quote Summary Tab and Convert to Order button', function () {
         searchTab.searchFor(quoteClonedFromOrder);
         searchTab.clickRowWithOrderNumber(quoteClonedFromOrder);
         fillUpGeneralForm();
@@ -118,7 +116,7 @@ describe('Quote', function () {
         orderTab.cloneAsQuote();
         orderTab.getOrderNumber().then(function (text) {
             quoteClonedFromOrder = text;
-            console.log("Order number of clone = " + quoteClonedFromOrder);
+            console.log("Order number of quote cloned from an old order = " + quoteClonedFromOrder);
         });
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
@@ -144,16 +142,16 @@ describe('Quote', function () {
     };
 
     var fillUpGeneralForm = function () {
-        generalForm.selectOC(ocName)
-            .typeOrderName(orderName)
-            .typeCustomerOrderName(customerOrderName)
-            .typeDescription(description)
-            .pickShipDate(shipDate)
-            .pickReqInHands(reqInHands)
-            .pickFirmInHands(firmInHands)
-            .selectRush(rushValue)
-            .selectMulti(multiValue)
-            .selectAE(aeName)
-            .selectSC(scName);
+        generalForm.typeOrderName(orderName);
+        generalForm.typeCustomerOrderName(customerOrderName);
+        generalForm.typeDescription(description);
+        generalForm.pickShipDate(shipDate);
+        generalForm.pickReqInHands(reqInHands);
+        generalForm.pickFirmInHands(firmInHands);
+        generalForm.selectRush(rushValue);
+        generalForm.selectMulti(multiValue);
+        generalForm.selectAE(aeName);
+        generalForm.selectSC(scName);
+        generalForm.selectOC(ocName);
     };
 });

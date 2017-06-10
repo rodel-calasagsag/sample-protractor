@@ -149,17 +149,17 @@ describe('Quote', function () {
     };
 
     var fillUpGeneralForm = function () {
-        generalForm.selectOC(ocName)
-            .typeOrderName(orderName)
-            .typeCustomerOrderName(customerOrderName)
-            .typeDescription(description)
-            .pickShipDate(shipDate)
-            .pickReqInHands(reqInHands)
-            .pickFirmInHands(firmInHands)
-            .selectRush(rushValue)
-            .selectMulti(multiValue)
-            .selectAE(aeName)
-            .selectSC(scName);
+        generalForm.typeOrderName(orderName);
+        generalForm.typeCustomerOrderName(customerOrderName);
+        generalForm.typeDescription(description);
+        generalForm.pickShipDate(shipDate);
+        generalForm.pickReqInHands(reqInHands);
+        generalForm.pickFirmInHands(firmInHands);
+        generalForm.selectRush(rushValue);
+        generalForm.selectMulti(multiValue);
+        generalForm.selectAE(aeName);
+        generalForm.selectSC(scName);
+        generalForm.selectOC(ocName);
     };
 
     var createNewQuote = function () {
