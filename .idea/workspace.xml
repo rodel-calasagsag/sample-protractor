@@ -15,31 +15,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="create.clone.quotes.spec.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+      <file leaf-file-name="clone.quote.spec.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smoke/quotes/clone.quote.spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="390">
+              <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order.search.tab.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/orders-module/tab-level/order.search.tab.js">
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/helpers/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.page.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/login.page.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            <state relative-caret-position="243">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -48,8 +38,8 @@
       <file leaf-file-name="quotes.conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smoke/quotes/quotes.conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="13" column="71" lean-forward="false" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+            <state relative-caret-position="216">
+              <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -80,7 +70,7 @@
       <file leaf-file-name="general.info.form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/orders-module/general-tab/general.info.form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
+            <state relative-caret-position="2889">
               <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
               <folding />
             </state>
@@ -107,7 +97,6 @@
         <option value="$PROJECT_DIR$/pages/orders-module/customer.tab.js" />
         <option value="$PROJECT_DIR$/helpers/base.urls.js" />
         <option value="$PROJECT_DIR$/smoke/quotes/quotes.spec.js" />
-        <option value="$PROJECT_DIR$/smoke/quotes/quotes.conf.js" />
         <option value="$PROJECT_DIR$/smoke/quotes/convert.quotes.spec.js" />
         <option value="$PROJECT_DIR$/helpers/inner.html.helper.js" />
         <option value="$PROJECT_DIR$/pages/common/select.js" />
@@ -121,6 +110,10 @@
         <option value="$PROJECT_DIR$/pages/orders-module/general-tab/general.info.form.js" />
         <option value="$PROJECT_DIR$/pages/orders-module/tab-level/order.search.tab.js" />
         <option value="$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js" />
+        <option value="$PROJECT_DIR$/smoke/quotes/quotes.conf.js" />
+        <option value="$PROJECT_DIR$/smoke/quotes/create.quote.spec.js" />
+        <option value="$PROJECT_DIR$/smoke/quotes/clone.quote.spec.js" />
+        <option value="$PROJECT_DIR$/helpers/user.js" />
       </list>
     </option>
   </component>
@@ -152,7 +145,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -183,8 +175,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOFLO Protractor Tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,6 +203,9 @@
     <property name="nodejs.protractor.protractor_package" value="$USER_HOME$/AppData/Roaming/npm/node_modules/protractor" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BitBucket\Webstorm Projects\SOFLO Protractor Tests\smoke\quotes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\BitBucket\Webstorm Projects\SOFLO Protractor Tests\smoke\quotes" />
     </key>
@@ -213,7 +223,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Protractor.smoke test quotes">
-    <configuration default="false" name="create.clone.quotes.spec.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="create.clone.quotes.spec.js" working-dir="$PROJECT_DIR$/smoke/quotes">
+    <configuration default="false" name="create.clone.quotes.spec.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="$PROJECT_DIR$/smoke/quotes/create.quote.spec.js" working-dir="$PROJECT_DIR$/smoke/quotes">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -326,6 +336,7 @@
       <workItem from="1497083953831" duration="25000" />
       <workItem from="1497084042828" duration="1717000" />
       <workItem from="1497086312886" duration="3278000" />
+      <workItem from="1497092316666" duration="1452000" />
     </task>
     <servers />
   </component>
@@ -362,7 +373,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91781000" />
+    <option name="totallyTimeSpent" value="93233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5749" y="1089" width="2422" height="1372" extended-state="6" />
@@ -399,21 +410,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/common/select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/tab-level/order.search.tab.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -453,7 +449,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.quote.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3591">
           <caret line="140" column="25" lean-forward="false" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
@@ -504,7 +500,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.quote.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
@@ -562,7 +558,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.quote.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -591,7 +587,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.quote.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -649,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smoke/quotes/convert.quotes.spec.js" />
     <entry file="file://$PROJECT_DIR$/helpers/inner.html.helper.js" />
     <entry file="file://$PROJECT_DIR$/pages/common/date.picker.js">
@@ -710,14 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/quotes.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="71" lean-forward="false" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/summary-tab/summary.tab.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -728,8 +709,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/general-tab/general.info.form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
+        <state relative-caret-position="2889">
           <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/orders-module/tab-level/order.tab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -744,24 +733,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/orders-module/tab-level/order.search.tab.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
+        <state relative-caret-position="1134">
           <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/orders-module/tab-level/order.tab.js">
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/quotes.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+        <state relative-caret-position="216">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.clone.quotes.spec.js">
+    <entry file="file://$PROJECT_DIR$/helpers/order.statuses.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/create.quote.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smoke/quotes/clone.quote.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding />
         </state>
       </provider>

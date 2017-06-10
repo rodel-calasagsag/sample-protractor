@@ -9,7 +9,7 @@ var WaitTime = require('../helpers/wait.times');
 var LoginPage = function () {
     // elements
     var usernameInput = element(by.name('userName'));
-    var passwordInput = element(by.name('password'));
+    var passwordInput = element(by.name('globalPassword'));
     var loginBtn = element(by.css('.btn-primary'));
 
     // other vars

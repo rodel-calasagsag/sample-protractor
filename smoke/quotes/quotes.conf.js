@@ -6,7 +6,7 @@ exports.config = {
     capabilities: {
         'browserName': 'chrome' // chrome, firefox, internet explorer, MicrosoftEdge
     },
-    specs: ['create.clone.quotes.spec.js'],
+    specs: ['clone.quote.spec.js'],
 
     onPrepare: function () {
         browser.driver.manage().window().maximize();

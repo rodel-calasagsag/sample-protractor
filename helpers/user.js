@@ -1,26 +1,30 @@
 "use strict";
 
 var User = {
-    password: "Awes0me1",
+    globalPassword: "Awes0me1",
 
-    testAe1: {
+    test1: {
         name: 'Test Account1',
-        username: 'Test1'
+        username: 'Test1',
+        type: 'Account Executive'
     },
 
-    testAe2: {
+    test2: {
         name: 'Test Account2',
-        username: 'Test2'
+        username: 'Test2',
+        type: 'Account Executive'
     },
 
-    testSc3: {
+    test3: {
         name: 'Test Account 3',
-        username: 'Test3'
+        username: 'Test3',
+        type: 'Sales Coordinator'
     },
 
-    testSc4: {
+    test4: {
         name: 'Test Account4',
-        username: 'Test4'
+        username: 'Test4',
+        type: 'Sales Coordinator'
     }
 };
 
