@@ -33,23 +33,28 @@ var GeneralInfoForm = function () {
         browser.wait(EC.elementToBeClickable(orderNameField), WaitTime.fiveSec);
         orderNameField.clear();
         orderNameField.sendKeys(orderName);
+        return this;
     };
 
     this.typeDescription = function (description) {
         descriptionField.clear();
         descriptionField.sendKeys(description);
+        return this;
     };
 
     this.pickShipDate = function (shipDate) {
         datePicker.pick(shipDateField, shipDate);
+        return this;
     };
 
     this.pickReqInHands = function (reqDate) {
         datePicker.pick(inHandsDateField, reqDate);
+        return this;
     };
 
     this.pickFirmInHands = function (firmDate) {
         datePicker.pick(firmInHandsDateField, firmDate);
+        return this;
     };
 
     this.selectRush = function (isRush) {
@@ -58,6 +63,7 @@ var GeneralInfoForm = function () {
         } else {
             rushNoBtn.click();
         }
+        return this;
     };
 
     this.selectMulti = function (isMulti) {
@@ -66,29 +72,35 @@ var GeneralInfoForm = function () {
         } else {
             multiNoBtn.click();
         }
+        return this;
     };
 
     this.selectCustomOrder = function () {
         customOrderBtn.click();
+        return this;
     };
 
     this.selectBulkItems = function () {
         bulkItemsBtn.click();
+        return this;
     };
 
     this.selectAE = function (aeName) {
         var aeSelect = new Select(aeDropDown);
         aeSelect.byText(aeName);
+        return this;
     };
 
     this.selectSC = function (scName) {
         var scSelect = new Select(scDropDown);
         scSelect.byText(scName);
+        return this;
     };
 
     this.selectOC = function (ocName) {
         var scSelect = new Select(ocDropDown);
         scSelect.byText(ocName);
+        return this;
     };
 
     this.clickCreateOrder = function () {
@@ -102,6 +114,7 @@ var GeneralInfoForm = function () {
     this.typeCustomerOrderName = function (customerOrderName) {
         customerOrderNameField.clear();
         customerOrderNameField.sendKeys(customerOrderName);
+        return this;
     };
 };
 

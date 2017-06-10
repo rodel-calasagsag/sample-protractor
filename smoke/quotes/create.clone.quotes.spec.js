@@ -24,11 +24,11 @@ describe('Quotes', function () {
     var oldOrderNumber = "13157";
     var quoteClonedFromOrder;
 
-    // domain: general info
+    // domain vars: general info
     var orderName = 'Build Swag for Bing - Drawstring Packs - RUSH';
-    var customerOrderName = "GoDaddy TA Ambassador Tees (Customr Ordr Nme)";
+    var customerOrderName = "GoDaddy TA Ambassador Tees <<Customr Ordr Nme>>";
     var description = 'Description for: Build Swag for Bing - Drawstring Packs';
-    var shipDate = new Date('06/26/2017');
+    var shipDate = new Date('06/30/2017');
     var reqInHands = new Date('07/14/2017');
     var firmInHands = new Date('08/31/2017');
     var rushValue = true;
@@ -36,9 +36,9 @@ describe('Quotes', function () {
     var aeName = 'Test Account2';
     var scName = 'Test Account 3';
     var ocName = 'Test Account4';
-    var orderCreateDateTime = new Date("12:04 PM 05/22/2017");
+    var orderCreateDateTime;
 
-    // domain: customer details
+    // domain vars: customer details
     var customerName;
     var customerSap = "0001365875";
     var customerEmail;
@@ -128,6 +128,7 @@ describe('Quotes', function () {
         searchTab.clickRowWithOrderNumber(quoteClonedFromOrder);
         fillUpGeneralForm();
         generalForm.clickSaveChanges();
+        verifySavedGeneralInfo();
         summaryTab.click();
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
@@ -158,8 +159,8 @@ describe('Quotes', function () {
     // utility methods
 
     var cloneOrderAsQuote = function () {
-        searchTab.searchFor(oldOrderNumber);
-        searchTab.clickRowWithOrderNumber(oldOrderNumber);
+        searchTab.searchFor(oldOrderNumber)
+            .clickRowWithOrderNumber(oldOrderNumber);
         orderTab.cloneAsQuote();
         orderTab.getOrderNumber().then(function (text) {
             newOrderNumber = text;
@@ -206,17 +207,17 @@ describe('Quotes', function () {
     };
 
     var fillUpGeneralForm = function () {
-        generalForm.selectOC(ocName);
-        generalForm.typeOrderName(orderName);
-        generalForm.typeCustomerOrderName(customerOrderName);
-        generalForm.typeDescription(description);
-        generalForm.pickShipDate(shipDate);
-        generalForm.pickReqInHands(reqInHands);
-        generalForm.pickFirmInHands(firmInHands);
-        generalForm.selectRush(rushValue);
-        generalForm.selectMulti(multiValue);
-        generalForm.selectAE(aeName);
-        generalForm.selectSC(scName);
+        generalForm.selectOC(ocName)
+            .typeOrderName(orderName)
+            .typeCustomerOrderName(customerOrderName)
+            .typeDescription(description)
+            .pickShipDate(shipDate)
+            .pickReqInHands(reqInHands)
+            .pickFirmInHands(firmInHands)
+            .selectRush(rushValue)
+            .selectMulti(multiValue)
+            .selectAE(aeName)
+            .selectSC(scName);
     };
 
     var createNewQuote = function () {
