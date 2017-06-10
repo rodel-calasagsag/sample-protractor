@@ -78,8 +78,9 @@ var OrderTab = function () {
     };
 
     this.clickCogIcon = function () {
-        cogIcon.click();
-        browser.wait(EC.visibilityOf(createQuoteBtn), WaitTime.fiveSec);
+        cogIcon.click().then(function () {
+            browser.wait(EC.visibilityOf(createQuoteBtn), WaitTime.fiveSec);
+        });
     };
 
     this.cloneAsQuote = function () {

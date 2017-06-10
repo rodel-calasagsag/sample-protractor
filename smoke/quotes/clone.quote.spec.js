@@ -8,11 +8,10 @@ var BaseUrl = require('../../helpers/base.urls');
 var GeneralTab = require('../../pages/orders-module/general-tab/general.tab');
 var OrderTab = require('../../pages/orders-module/tab-level/order.tab');
 var OrderStatus = require('../../helpers/order.statuses');
-var CustomerTab = require('../../pages/orders-module/customer.tab');
 var SummaryTab = require('../../pages/orders-module/summary-tab/summary.tab');
-var CustomerSection = require('../../pages/orders-module/summary-tab/customer.section');
 var QuoteSummaryTab = require('../../pages/orders-module/quote-summary-tab/quote.summary.tab');
 var OrdersModule = require('../../pages/orders-module/orders.module');
+var WaitTime = require('../../helpers/wait.times');
 
 describe('Quote', function () {
 
@@ -67,31 +66,33 @@ describe('Quote', function () {
     // spec 1
     it('can be cloned FROM an order', function () {
         cloneOrderAsQuote();
-        fillUpGeneralForm();
-        generalForm.clickSaveChanges();
+        orderTab.getOrderNumber().then(function (text) {
+            quoteClonedFromOrder = text;
+            console.log("Order number of quote cloned from an old order = " + quoteClonedFromOrder);
+        });
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
     });
 
     // spec 2
-    xit('cloned FROM an order has Quote has a Quote Summary Tab and Convert to Order button', function () {
+    it('cloned FROM an order has a Quote Summary Tab and Convert to Order button', function () {
         searchTab.searchFor(quoteClonedFromOrder);
         searchTab.clickRowWithOrderNumber(quoteClonedFromOrder);
         fillUpGeneralForm();
         generalForm.clickSaveChanges();
-        setOrderCreateDateTime();
         verifySavedGeneralInfo();
-        summaryTab.click();
-
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
+
+        summaryTab.click();
         expect(quoteTab.isPresent()).toBeTruthy();
+        // fixme this is failing
         expect(summaryTab.convertToOrderBtnDisplayed()).toBeTruthy();
     });
 
     // spec 3
     xit('can be cloned TO an order', function () {
-        searchTab.searchFor(newOrderNumber)
-            .clickRowWithOrderNumber(newOrderNumber);
+        searchTab.searchFor(quoteClonedFromOrder)
+            .clickRowWithOrderNumber(quoteClonedFromOrder);
         orderTab.cloneAsOrder();
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.incomplete);
@@ -111,20 +112,11 @@ describe('Quote', function () {
     // utility methods
 
     var cloneOrderAsQuote = function () {
-        searchTab.searchFor(oldOrderNumber)
-            .clickRowWithOrderNumber(oldOrderNumber);
+        searchTab.searchFor(oldOrderNumber);
+        searchTab.clickRowWithOrderNumber(oldOrderNumber);
         orderTab.cloneAsQuote();
-        orderTab.getOrderNumber().then(function (text) {
-            quoteClonedFromOrder = text;
-            console.log("Order number of quote cloned from an old order = " + quoteClonedFromOrder);
-        });
 
         expect(orderTab.getOrderStatus()).toEqual(OrderStatus.quote);
-    };
-
-    var setOrderCreateDateTime = function () {
-        orderCreateDateTime = new Date();
-        orderCreateDateTime.setSeconds(0);
     };
 
     var verifySavedGeneralInfo = function () {

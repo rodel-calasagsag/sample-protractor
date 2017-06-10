@@ -1,11 +1,15 @@
 'use strict';
 
-var Select = function (dropDownElement) {
+var Select = function () {
 
-    this.byText = function (text) {
-        var optionTag = 'option';
-
-        element(dropDownElement.locator()).element(by.cssContainingText(optionTag, text)).click();
+    this.byText = function (options, innerText) {
+        options.each(function (option) {
+            option.getText().then(function (currentOptionText) {
+                if (currentOptionText === innerText) {
+                    option.click();
+                }
+            });
+        });
     };
 };
 

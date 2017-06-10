@@ -17,14 +17,15 @@ var GeneralInfoForm = function () {
     var multiYesBtn = $('[title="Choose Yes if this is a multiple shipping order."]');
     var customOrderBtn = element(by.cssContainingText('label.btn', 'Custom Order'));
     var bulkItemsBtn = element(by.cssContainingText('label.btn', 'Bulk Items'));
-    var aeDropDown = element(by.id('accountManagerId'));
-    var scDropDown = element(by.id('salesCoordinatorId'));
-    var ocDropDown = element(by.id('orderCreatorId'));
+    var aeOptions = element.all(by.options('user.UserId as user.FullName for user in accountManagers'));
+    var scOptions = element.all(by.options('user.UserId as user.FullName for user in salesCoordinators'));
+    var ocOptions = element.all(by.options('user.UserId as user.FullName for user in users'));
     var createOrderBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Create Order'));
     var saveChangesBtn = element(by.buttonText('Save Changes'));
 
     // page objects
     var datePicker = new DatePicker();
+    var select = new Select();
 
     // expected condition
     var EC = protractor.ExpectedConditions;
@@ -77,18 +78,15 @@ var GeneralInfoForm = function () {
     };
 
     this.selectAE = function (aeName) {
-        var aeSelect = new Select(aeDropDown);
-        aeSelect.byText(aeName);
+        select.byText(aeOptions, aeName);
     };
 
     this.selectSC = function (scName) {
-        var scSelect = new Select(scDropDown);
-        scSelect.byText(scName);
+        select.byText(scOptions, scName);
     };
 
     this.selectOC = function (ocName) {
-        var scSelect = new Select(ocDropDown);
-        scSelect.byText(ocName);
+        select.byText(ocOptions, ocName);
     };
 
     this.clickCreateOrder = function () {

@@ -10,7 +10,6 @@ exports.config = {
 
     onPrepare: function () {
         browser.driver.manage().window().maximize();
-        // jasmine.DEFAULT_TIMEOUT_INTERVAL = WaitTime.tenSec;
-        // browser.manage().timeouts().implicitlyWait(WaitTime.tenSec);
+        // jasmine.getEnv().defaultTimeoutInterval = WaitTime.fiveSec;
     }
 };

@@ -39,14 +39,12 @@ var OrderSearchTab = function () {
         searchField.sendKeys(query);
         searchBtn.click();
         this.click();
-        browser.wait(untilResultsAreLoaded(), WaitTime.halfMin, "No results were loaded after the specified waiting time");
-        return this;
+        browser.wait(untilResultsAreLoaded(), WaitTime.halfMin, "No results were loaded");
     };
 
     this.click = function () {
         tab.click();
         browser.wait(EC.visibilityOf(searchField), WaitTime.fiveSec);
-        return this;
     };
 
     this.findRowWithOrderNumber = function (orderNumber) {

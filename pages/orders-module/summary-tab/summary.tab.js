@@ -5,7 +5,7 @@ var SummaryTab = function () {
     // elements
     var tab = $('li[heading="Summary"]');
     var zFeeLine = element(by.cssContainingText('.text-sm', 'Note: A $10 order fee'));
-    var convertToOrderBtn = element(by.buttonText('Convert To Order'));
+    var convertToOrderBtn = $('[ng-click="convertQuoteToOrder()"]');
 
     // other fields
     var EC = protractor.ExpectedConditions;
@@ -15,7 +15,7 @@ var SummaryTab = function () {
     };
 
     this.convertToOrderBtnDisplayed = function () {
-        return convertToOrderBtn.isPresent();
+        return convertToOrderBtn.isDisplayed();
     };
 };
 

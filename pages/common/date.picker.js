@@ -15,13 +15,15 @@ var DatePicker = function () {
     var EC = protractor.ExpectedConditions;
 
     var openDatePicker = function (dateField) {
-        dateField.click();
-        browser.wait(EC.visibilityOf(container), WaitTime.fiveSec);
+        dateField.click().then(function () {
+            browser.wait(EC.visibilityOf(container), WaitTime.fiveSec);
+        });
     };
 
     var clearDate = function () {
-        clearBtn.click();
-        browser.wait(EC.stalenessOf(container), WaitTime.fiveSec);
+        clearBtn.click().then(function () {
+            browser.wait(EC.stalenessOf(container), WaitTime.fiveSec);
+        });
     };
 
     /**
@@ -47,7 +49,7 @@ var DatePicker = function () {
         var monthHasStarted = false;
 
         dayButtons.reduce(function (acc, dayBtn) {
-            if (typeof acc !== 'undefined') {
+            if (acc) {
                 return acc;
             }
 
@@ -59,7 +61,6 @@ var DatePicker = function () {
                 }
 
                 if (monthHasStarted && innerNum === targetNum) {
-                    console.log("Found the target number: " + innerText);
                     return dayBtn;
                 }
             });
