@@ -4,7 +4,7 @@ var User = {
     globalPassword: "Awes0me1",
 
     test1: {
-        name: 'Test Account1',
+        name: 'Test account1',
         username: 'Test1',
         type: 'Account Executive'
     },

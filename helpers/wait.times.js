@@ -2,6 +2,7 @@
 
 var WaitFor = {
     oneSec: 1000,
+    threeSec: 3000,
     fiveSec: 5000,
     tenSec: 10000,
     halfMin: 30000,

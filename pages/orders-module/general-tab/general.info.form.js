@@ -1,7 +1,8 @@
 'use strict';
 var Select = require('../../common/select');
 var DatePicker = require('../../common/date.picker');
-var WaitTime = require('../../../helpers/wait.times');
+var Wait = require('../../../helpers/wait.times');
+var OrderTab = require('../tab-level/order.tab');
 
 var GeneralInfoForm = function () {
     // page elements
@@ -25,15 +26,19 @@ var GeneralInfoForm = function () {
 
     // page objects
     var datePicker = new DatePicker();
-    var select = new Select();
+    var orderTab = new OrderTab();
+    var aeSelect = new Select(aeOptions);
+    var scSelect = new Select(scOptions);
+    var ocSelect = new Select(ocOptions);
 
     // expected condition
     var EC = protractor.ExpectedConditions;
 
     this.typeOrderName = function (orderName) {
-        browser.wait(EC.elementToBeClickable(orderNameField), WaitTime.fiveSec);
+        browser.wait(EC.elementToBeClickable(orderNameField), Wait.fiveSec);
         orderNameField.clear();
         orderNameField.sendKeys(orderName);
+        browser.wait(untilOrderNameIsUpdated(orderName), Wait.fiveSec);
     };
 
     this.typeDescription = function (description) {
@@ -78,15 +83,15 @@ var GeneralInfoForm = function () {
     };
 
     this.selectAE = function (aeName) {
-        select.byText(aeOptions, aeName);
+        aeSelect.byText(aeName);
     };
 
     this.selectSC = function (scName) {
-        select.byText(scOptions, scName);
+        scSelect.byText(scName);
     };
 
     this.selectOC = function (ocName) {
-        select.byText(ocOptions, ocName);
+        ocSelect.byText(ocName);
     };
 
     this.clickCreateOrder = function () {
@@ -100,6 +105,13 @@ var GeneralInfoForm = function () {
     this.typeCustomerOrderName = function (customerOrderName) {
         customerOrderNameField.clear();
         customerOrderNameField.sendKeys(customerOrderName);
+    };
+
+    // helper methods
+    var untilOrderNameIsUpdated = function (expOrderName) {
+        return orderTab.getOrderName().then(function (actOrderName) {
+            return expOrderName === actOrderName;
+        });
     };
 };
 

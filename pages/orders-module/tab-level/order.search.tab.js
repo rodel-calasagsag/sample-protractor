@@ -1,5 +1,6 @@
 "use strict";
 var WaitTime = require('../../../helpers/wait.times');
+var OrderTab = require('../tab-level/order.tab');
 
 /**
  * Page object for the Order Search tab
@@ -35,6 +36,7 @@ var OrderSearchTab = function () {
     };
 
     this.searchFor = function (query) {
+        browser.wait(EC.presenceOf(searchField), WaitTime.fiveSec);
         searchField.clear();
         searchField.sendKeys(query);
         searchBtn.click();
@@ -118,7 +120,7 @@ var OrderSearchTab = function () {
             console.log("Number of matches returned = " + count);
         });
 
-        var promisedRowWithOrderNum = searchResults.reduce(function (acc, row) {
+        searchResults.reduce(function (acc, row) {
             if (acc) {
                 return acc;
             }
@@ -128,9 +130,7 @@ var OrderSearchTab = function () {
                     return row;
                 }
             });
-        });
-
-        promisedRowWithOrderNum.then(function (row) {
+        }).then(function (row) {
             row.element(orderNumAndTitleSpan.locator()).click();
         });
     };

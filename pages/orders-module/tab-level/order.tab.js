@@ -1,22 +1,25 @@
 'use strict';
-var WaitTime = require('../../../helpers/wait.times');
+var Wait = require('../../../helpers/wait.times');
 
 var OrderTab = function () {
     // parent elements
     var activeTab = $('.parent-tabs > .active');
     var activeTabPane = $('.parent-tabs-content > .tab-pane.active');
 
-    // parent tab child elements
+    // tab panel elements
     var orderNumber = element(activeTab.locator()).$("span.ng-binding");
     var storeCode = element(activeTab.locator()).$('span.ng-binding + .quiet');
+
+    // child tabs
+    var generalTab = element(activeTabPane.locator()).$('li[heading="General"]');
 
     // tab details
     var orderName = element(activeTabPane.locator()).$(".tab-title > span:nth-child(2)");
     var orderStatus = element(activeTabPane.locator()).$("a.dropdown-toggle span.ng-binding");
     var reqInHandsDate = element(activeTabPane.locator()).$('.nav.nav-pills + div .ng-binding');
     var firmInHandsDate = element(activeTabPane.locator()).$('.nav.nav-pills + div + div .ng-binding');
-    var accountExecutive = element(activeTabPane.locator()).$(".pull-right .media-wrapper:nth-last-child(2)");
-    var salesCoordinator = element(activeTabPane.locator()).$(".pull-right .media-wrapper:last-child");
+    var aeAvatar = element(activeTabPane.locator()).$(".pull-right .media-wrapper:nth-last-child(2)");
+    var scAvatar = element(activeTabPane.locator()).$(".pull-right .media-wrapper:last-child");
     var customerName = element(activeTabPane.locator()).$('.fa + .text-sm.text-small.ng-binding');
     var multiIcon = element(activeTabPane.locator()).$('img[title="This order has multiple drop ships"]');
     var rushIcon = element(activeTabPane.locator()).$('img[title="Hurry up! This is a Rush order!"]');
@@ -32,6 +35,7 @@ var OrderTab = function () {
     };
 
     this.getOrderStatus = function () {
+        browser.wait(EC.presenceOf(orderStatus), Wait.fiveSec);
         return orderStatus.getText();
     };
 
@@ -48,11 +52,11 @@ var OrderTab = function () {
     };
 
     this.getAE = function () {
-        return accountExecutive.getAttribute('title');
+        return aeAvatar.getAttribute('title');
     };
 
     this.getSC = function () {
-        return salesCoordinator.getAttribute('title');
+        return scAvatar.getAttribute('title');
     };
 
     this.getOrderNumber = function () {
@@ -78,19 +82,59 @@ var OrderTab = function () {
     };
 
     this.clickCogIcon = function () {
-        cogIcon.click().then(function () {
-            browser.wait(EC.visibilityOf(createQuoteBtn), WaitTime.fiveSec);
-        });
+        browser.wait(EC.elementToBeClickable(cogIcon), Wait.tenSec);
+        cogIcon.click();
     };
 
     this.cloneAsQuote = function () {
         this.clickCogIcon();
+        browser.wait(EC.elementToBeClickable(createQuoteBtn), Wait.fiveSec);
         createQuoteBtn.click();
     };
 
     this.cloneAsOrder = function () {
         this.clickCogIcon();
+        browser.wait(EC.elementToBeClickable(createOrderBtn), Wait.fiveSec);
         createOrderBtn.click();
+    };
+
+    this.goToGeneralTab = function () {
+        browser.wait(EC.elementToBeClickable(generalTab), Wait.fiveSec);
+        generalTab.click();
+    };
+
+    // helper methods
+
+    this.waitUntilAeAvatarUpdates = function (expAeName) {
+        browser.wait(EC.stalenessOf(aeAvatar), Wait.threeSec).then(function () {
+            console.log("AE Avatar has went stale");
+
+            browser.wait(EC.presenceOf(aeAvatar), Wait.threeSec).then(function () {
+                console.log("AE Avatar became present again");
+
+                browser.wait(function () {
+                    return this.getAE().then(function (actAeName) {
+                        return actAeName === expAeName;
+                    });
+                }, Wait.threeSec);
+            });
+        }, function (err) {
+            console.log("Caught error while waiting for AE avatar to become stale: " + err.toString());
+        });
+    };
+
+    this.waitUntilScAvatarUpdates = function (expScName) {
+        browser.wait(EC.stalenessOf(scAvatar), Wait.threeSec).then(function () {
+            // do nothing when sc avatar became stale
+        }, function (err) {
+            console.log("Caught error while waiting for SC avatar to become stale: " + err.toString());
+        });
+        browser.wait(EC.presenceOf(scAvatar), Wait.threeSec);
+        browser.wait(function () {
+            return this.getSC().then(function (actScName) {
+                return actScName === expScName;
+            });
+        }, Wait.threeSec);
     };
 };
 

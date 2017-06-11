@@ -1,5 +1,6 @@
 "use strict";
 var WaitTimes = require('../../../helpers/wait.times');
+var GeneralForm = require('./general.info.form');
 
 var GeneralTab = function () {
     // constants
@@ -16,22 +17,21 @@ var GeneralTab = function () {
     const NULL_STRING = "";
 
     // elements
-    var tab = element(by.css('li[heading="General"]'));
-    var tabTitle = element(by.cssContainingText('.legend', 'General Info'));
-    var iconedValues = $$('.label.wide + .value.buffer-top');
-    var orderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_NAME));
-    var customerOrderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_CUSTOMER_ORDER_NAME));
-    var description = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_DESCRIPTION));
-    var shipDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SHIP_DATE));
-    var reqInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_REQ_IN_HANDS));
-    var firmInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_FIRM_IN_HANDS));
-    var rushValue = iconedValues.first();
-    var multiValue = iconedValues.last();
-    var accountExecutive = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ACCOUNT_EXECUTIVE));
-    var salesCoordinator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SALES_COORDINATOR));
-    var orderCreator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_CREATOR));
-    var editBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Edit'));
-
+    this.tab = element(by.css('li[heading="General"]'));
+    this.tabTitle = element(by.cssContainingText('.legend', 'General Info'));
+    this.iconedValues = $$('.label.wide + .value.buffer-top');
+    this.orderName = element.all(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_NAME)).first();
+    this.customerOrderName = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_CUSTOMER_ORDER_NAME));
+    this.description = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_DESCRIPTION));
+    this.shipDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SHIP_DATE));
+    this.reqInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_REQ_IN_HANDS));
+    this.firmInHandsDate = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_FIRM_IN_HANDS));
+    this.rushValue = this.iconedValues.first();
+    this.multiValue = this.iconedValues.last();
+    this.accountExecutive = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ACCOUNT_EXECUTIVE));
+    this.salesCoordinator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_SALES_COORDINATOR));
+    this.orderCreator = element(by.cssContainingText(DETAILS_LOCATOR, LABEL_ORDER_CREATOR));
+    this.editBtn = element(by.cssContainingText('#orderGeneralForm .btn-primary', 'Edit'));
 
     // other fields
     var EC = protractor.ExpectedConditions;
@@ -42,8 +42,8 @@ var GeneralTab = function () {
      * @returns {*} Date object representing the ship date
      */
     this.click = function () {
-        tab.click();
-        browser.wait(EC.visibilityOf(tabTitle), WaitTimes.fiveSec);
+        this.tab.click();
+        browser.wait(EC.visibilityOf(this.tabTitle), WaitTimes.fiveSec);
     };
 
     /**
@@ -52,7 +52,7 @@ var GeneralTab = function () {
      * @returns {*} The order name
      */
     this.getOrderName = function () {
-        return orderName.getText().then(function (text) {
+        return this.orderName.getText().then(function (text) {
             var heading = LABEL_ORDER_NAME.toUpperCase();
 
             return text.replace(heading, NULL_STRING).trim();
@@ -60,7 +60,7 @@ var GeneralTab = function () {
     };
 
     this.getCustomerOrderName = function () {
-        return customerOrderName.getText().then(function (text) {
+        return this.customerOrderName.getText().then(function (text) {
             var heading = LABEL_CUSTOMER_ORDER_NAME.toUpperCase();
 
             return text.replace(heading, NULL_STRING).trim();
@@ -68,17 +68,15 @@ var GeneralTab = function () {
     };
 
     this.getDescription = function () {
-        return description.getText().then(function (strDesc) {
+        return this.description.getText().then(function (strDesc) {
             if (strDesc.length > 0) {
                 return strDesc.replace(LABEL_DESCRIPTION.toUpperCase(), NULL_STRING).trim();
-            } else {
-                return null;
             }
         });
     };
 
     this.getShipDate = function () {
-        return shipDate.getText().then(function (strDate) {
+        return this.shipDate.getText().then(function (strDate) {
             var extracted = strDate.replace(LABEL_SHIP_DATE.toUpperCase(), NULL_STRING).trim();
 
             return new Date(extracted);
@@ -86,7 +84,7 @@ var GeneralTab = function () {
     };
 
     this.getReqInHands = function () {
-        return reqInHandsDate.getText().then(function (strDate) {
+        return this.reqInHandsDate.getText().then(function (strDate) {
             var extracted = strDate.replace(LABEL_REQ_IN_HANDS.toUpperCase(), NULL_STRING).trim();
 
             return new Date(extracted);
@@ -94,49 +92,47 @@ var GeneralTab = function () {
     };
 
     this.getFirmInHands = function () {
-        return firmInHandsDate.getText().then(function (strDate) {
+        return this.firmInHandsDate.getText().then(function (strDate) {
             if (strDate.length > 0) {
                 var extracted = strDate.replace(LABEL_FIRM_IN_HANDS.toUpperCase(), NULL_STRING).trim();
 
                 return new Date(extracted);
-            } else {
-                return null;
             }
         });
     };
 
     this.getRushValue = function () {
-        return rushValue.getText().then(function (text) {
+        return this.rushValue.getText().then(function (text) {
             return text === 'YES';
         });
     };
 
     this.getMultiValue = function () {
-        return multiValue.getText().then(function (text) {
+        return this.multiValue.getText().then(function (text) {
             return text === 'YES';
         });
     };
 
     this.getAE = function () {
-        return accountExecutive.getText().then(function (text) {
+        return this.accountExecutive.getText().then(function (text) {
             return text.replace(LABEL_ACCOUNT_EXECUTIVE.toUpperCase(), NULL_STRING).trim();
         });
     };
 
     this.getSC = function () {
-        return salesCoordinator.getText().then(function (text) {
+        return this.salesCoordinator.getText().then(function (text) {
             return text.replace(LABEL_SALES_COORDINATOR.toUpperCase(), NULL_STRING).trim();
         });
     };
 
     this.getOC = function () {
-        return orderCreator.getText().then(function (text) {
+        return this.orderCreator.getText().then(function (text) {
             return text.replace(LABEL_ORDER_CREATOR.toUpperCase(), NULL_STRING).trim();
         });
     };
 
     this.clickEdit = function () {
-        editBtn.click();
+        this.editBtn.click();
     };
 };
 

@@ -1,14 +1,26 @@
 'use strict';
+var Wait = require('../../helpers/wait.times');
 
-var Select = function () {
+var Select = function (options) {
 
-    this.byText = function (options, innerText) {
-        options.each(function (option) {
-            option.getText().then(function (currentOptionText) {
+    // other vars
+    var EC = protractor.ExpectedConditions;
+
+    this.byText = function (innerText) {
+        return options.reduce(function (acc, option) {
+            if (acc) {
+                return acc;
+            }
+
+            return option.getText().then(function (currentOptionText) {
+                console.log("current name = " + currentOptionText);
                 if (currentOptionText === innerText) {
-                    option.click();
+                    console.log("MATCHED!!");
+                    return option;
                 }
             });
+        }).then(function (option) {
+            return option.click();
         });
     };
 };

@@ -1,5 +1,5 @@
 'use strict';
-var WaitTime = require('../../helpers/wait.times');
+var Wait = require('../../helpers/wait.times');
 
 var DatePicker = function () {
     // page elements
@@ -16,13 +16,13 @@ var DatePicker = function () {
 
     var openDatePicker = function (dateField) {
         dateField.click().then(function () {
-            browser.wait(EC.visibilityOf(container), WaitTime.fiveSec);
+            browser.wait(EC.visibilityOf(container), Wait.fiveSec);
         });
     };
 
     var clearDate = function () {
         clearBtn.click().then(function () {
-            browser.wait(EC.stalenessOf(container), WaitTime.fiveSec);
+            browser.wait(EC.stalenessOf(container), Wait.fiveSec);
         });
     };
 
@@ -68,7 +68,7 @@ var DatePicker = function () {
         }).then(function (dayBtn) {
             dayBtn.click();
         });
-        browser.wait(EC.stalenessOf(container), WaitTime.oneSec);
+        browser.wait(EC.stalenessOf(container), Wait.oneSec);
     };
 
     var goToTargetMonth = function (targetDate) {
@@ -80,7 +80,7 @@ var DatePicker = function () {
         for (var i = 0; i < Math.abs(monthDiff); i++) {
             arrowBtn.click();
         }
-        browser.wait(untilTargetMonthArrives, WaitTime.fiveSec);
+        browser.wait(untilTargetMonthArrives, Wait.fiveSec);
     };
 
     var computeMonthDiff = function (targetDate) {
