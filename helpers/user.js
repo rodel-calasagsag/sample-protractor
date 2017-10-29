@@ -1,7 +1,7 @@
 "use strict";
 
 var User = {
-    globalPassword: "Awes0me1",
+    globalPassword: "TestPassword01!@#",
 
     test1: {
         name: 'Test account1',
